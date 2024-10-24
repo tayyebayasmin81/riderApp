@@ -1,0 +1,16 @@
+export const Icons = {
+  account: require('./Account.png'),
+  bell: require('./Bell.png'),
+  calender: require('./calender.png'),
+  changes: require('./changes.png'),
+  clock: require('./clock.png'),
+  dashboard: require('./Dashboard.png'),
+  heart: require('./heart.png'),
+  left: require('./left.png'),
+  location: require('./location.png'),
+  map: require('./map.png'),
+  request: require('./Request.png'),
+  rides: require('./Rides.png'),
+  search: require('./search.png'),
+  bottom: require('./bottom.png'),
+};
