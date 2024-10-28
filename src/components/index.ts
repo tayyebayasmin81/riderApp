@@ -11,3 +11,4 @@ export {default as SecretWord} from './secret-word';
 export {default as SelectJoinee} from './select-joinee';
 export {default as SplitFare} from './split-fare';
 export {default as ChooseRide} from './choose-ride';
+export {default as VisaCard} from './visa-card';

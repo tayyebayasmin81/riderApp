@@ -20,6 +20,7 @@ import {
   SelectJoinee,
   SelectYouth,
   SplitFare,
+  VisaCard,
 } from '~components';
 import {Icons} from '~assets/images';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
@@ -33,6 +34,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSplitModalOpen, setIsSplitModalOpen] = useState(false);
   const [isChooseRideModalOpen, setChooseRideModalOpen] = useState(false);
+  const [isVisaModalOpen, setVisaModalOpen] = useState(false);
 
   const handleModalChange = (index: number) => {
     setIsModalOpen(index >= 0);
@@ -43,6 +45,9 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const handleChooseRideModal = (index: number) => {
     setChooseRideModalOpen(index >= 0);
   };
+  const handleVisaModal = (index: number) => {
+    setVisaModalOpen(index >= 0);
+  };
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const repeatTripsModalRef = useRef<BottomSheetModal>(null);
@@ -51,6 +56,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const selectJoineeModalRef = useRef<BottomSheetModal>(null);
   const splitFareModalRef = useRef<BottomSheetModal>(null);
   const chooseRideModalRef = useRef<BottomSheetModal>(null);
+  const visaModalRef = useRef<BottomSheetModal>(null);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -125,7 +131,10 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
               </BottomSheetModalProvider>
             </GestureHandlerRootView>
             <BottomSheetModalProvider>
-              {(isModalOpen || isSplitModalOpen || isChooseRideModalOpen) && (
+              {(isModalOpen ||
+                isSplitModalOpen ||
+                isChooseRideModalOpen ||
+                isVisaModalOpen) && (
                 <BlurView
                   blurType="light"
                   blurAmount={8}
@@ -156,9 +165,17 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                 handleModalChange={handleSplitModalChange}
               />
               <ChooseRide
-                onPressConfirm={() => {}}
+                onPressConfirm={() => {
+                  chooseRideModalRef?.current?.close();
+                  visaModalRef?.current?.present();
+                }}
                 bottomSheetModalRef={chooseRideModalRef}
                 handleModalChange={handleChooseRideModal}
+              />
+              <VisaCard
+                onPressConfirm={() => {}}
+                modalRef={visaModalRef}
+                handleModalChange={handleVisaModal}
               />
             </BottomSheetModalProvider>
           </ImageBackground>

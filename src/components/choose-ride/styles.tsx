@@ -22,5 +22,36 @@ const styles = StyleSheet.create({
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
+    width: width(100),
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+  },
+  image: {
+    marginLeft: -15,
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+    marginRight: 10,
+  },
+  textContainer: {
+    flex: 1,
+  },
+  title1: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  seats: {
+    fontSize: 12,
+    color: '#666',
+  },
+  description: {
+    fontSize: 12,
+    color: '#666',
+    marginTop: 5,
+  },
 });
 export default styles;

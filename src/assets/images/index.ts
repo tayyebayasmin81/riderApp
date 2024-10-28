@@ -17,4 +17,8 @@ export const Icons = {
   contact: require('./contact.png'),
   selected: require('./selcted.png'),
   car: require('./Car.png'),
+  up: require('./up.png'),
+  visa: require('./visa.png'),
+  token: require('./token.png'),
+  btn: require('./btn1.gif'),
 };
