@@ -28,3 +28,11 @@ export const contactdata = [
   {id: '4', name: 'Muzaffir Mohd', selected: false},
   {id: '5', name: 'Michelle Sam', selected: false},
 ];
+
+export const contactdata2 = [
+  {id: '1', name: 'Johny', selected: false, isMember: true},
+  {id: '2', name: 'Abdullah Anwar', selected: false, isMember: false},
+  {id: '3', name: 'Abu', selected: false, isMember: true},
+  {id: '4', name: 'Muzaffir Mohd', selected: false, isMember: true},
+  {id: '5', name: 'Michelle Sam', selected: false, isMember: false},
+];

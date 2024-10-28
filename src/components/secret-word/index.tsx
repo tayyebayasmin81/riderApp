@@ -69,12 +69,12 @@ const SecretWord: React.FC<Props> = ({
                 </View>
                 <Button
                   containerStyle={styles.confirmButton}
-                  onPress={() => setNeedCarpool(true)}
+                  onPress={() => onPressConfirm()}
                   title="Yes, I do"
                 />
                 <Button
                   containerStyle={styles.withoutBtn}
-                  onPress={() => setNeedCarpool(true)}
+                  onPress={() => onPressConfirm()}
                   title="No, continue without"
                 />
               </>

@@ -13,10 +13,13 @@ import styles from './styles';
 import AppColors from '~utils/app-colors';
 import {
   BookRideModal,
+  ChooseRide,
   DayPickerBottomSheet,
   Header,
   SecretWord,
+  SelectJoinee,
   SelectYouth,
+  SplitFare,
 } from '~components';
 import {Icons} from '~assets/images';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
@@ -28,15 +31,26 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const [sheetIndex, setSheetIndex] = useState(0);
   const [selectedTitle, setSelecteditle] = useState('Destination');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSplitModalOpen, setIsSplitModalOpen] = useState(false);
+  const [isChooseRideModalOpen, setChooseRideModalOpen] = useState(false);
 
   const handleModalChange = (index: number) => {
     setIsModalOpen(index >= 0);
+  };
+  const handleSplitModalChange = (index: number) => {
+    setIsSplitModalOpen(index >= 0);
+  };
+  const handleChooseRideModal = (index: number) => {
+    setChooseRideModalOpen(index >= 0);
   };
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const repeatTripsModalRef = useRef<BottomSheetModal>(null);
   const selectYouthModalRef = useRef<BottomSheetModal>(null);
   const secretWordModalRef = useRef<BottomSheetModal>(null);
+  const selectJoineeModalRef = useRef<BottomSheetModal>(null);
+  const splitFareModalRef = useRef<BottomSheetModal>(null);
+  const chooseRideModalRef = useRef<BottomSheetModal>(null);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -111,7 +125,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
               </BottomSheetModalProvider>
             </GestureHandlerRootView>
             <BottomSheetModalProvider>
-              {isModalOpen && (
+              {(isModalOpen || isSplitModalOpen || isChooseRideModalOpen) && (
                 <BlurView
                   blurType="light"
                   blurAmount={8}
@@ -120,8 +134,31 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
               )}
               <SecretWord
                 handleModalChange={handleModalChange}
-                onPressConfirm={() => {}}
+                onPressConfirm={() => {
+                  selectYouthModalRef?.current?.close();
+                  selectJoineeModalRef?.current?.present();
+                }}
                 modalRef={secretWordModalRef}
+              />
+              <SelectJoinee
+                onPressConfirm={() => {
+                  selectJoineeModalRef?.current?.close();
+                  splitFareModalRef?.current?.present();
+                }}
+                bottomSheetModalRef={selectJoineeModalRef}
+              />
+              <SplitFare
+                onPressConfirm={() => {
+                  splitFareModalRef?.current?.close();
+                  chooseRideModalRef?.current?.present();
+                }}
+                bottomSheetModalRef={splitFareModalRef}
+                handleModalChange={handleSplitModalChange}
+              />
+              <ChooseRide
+                onPressConfirm={() => {}}
+                bottomSheetModalRef={chooseRideModalRef}
+                handleModalChange={handleChooseRideModal}
               />
             </BottomSheetModalProvider>
           </ImageBackground>

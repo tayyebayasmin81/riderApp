@@ -8,3 +8,6 @@ export {default as DayPickerBottomSheet} from './repeat-trips-modal';
 export {default as AddPhotoReminder} from './add-photo-reminder';
 export {default as SelectYouth} from './select-youth';
 export {default as SecretWord} from './secret-word';
+export {default as SelectJoinee} from './select-joinee';
+export {default as SplitFare} from './split-fare';
+export {default as ChooseRide} from './choose-ride';

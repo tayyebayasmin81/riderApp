@@ -16,4 +16,5 @@ export const Icons = {
   child: require('./child.png'),
   contact: require('./contact.png'),
   selected: require('./selcted.png'),
+  car: require('./Car.png'),
 };

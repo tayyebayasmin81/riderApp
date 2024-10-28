@@ -2103,6 +2103,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@miblanchard/react-native-slider@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@miblanchard/react-native-slider@npm:2.6.0"
+  peerDependencies:
+    react: ">=16.8"
+    react-native: ">=0.59"
+  checksum: cdaaca314e94133e87a623cfe59dac950aeb6ba09946fb89f03d4c2a0cd131db80b368c320c34e5c126a10041026a83e00df3182d2346857e7b51aed96632748
+  languageName: node
+  linkType: hard
+
 "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1":
   version: 5.1.1-v1
   resolution: "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1"
@@ -2165,6 +2175,16 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 6ad6a00fc4f2f2cfc6bff76fb1d88b8ee20bc0601e18ebb01b6d4be583733a860239a521a7fbca73b612e66705078809483549d2b18f370eb346c5155c8e4a0f
+  languageName: node
+  linkType: hard
+
+"@ptomasroos/react-native-multi-slider@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "@ptomasroos/react-native-multi-slider@npm:2.2.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: f9e2263b4283cdd0011ad3c2e1ea6d70afe2c2f865a52c35e0f6c4fd948114762105a11f364e68da87de782490bfa1473540c6227e2e0033555e84827086464c
   languageName: node
   linkType: hard
 
@@ -2363,6 +2383,13 @@ __metadata:
   bin:
     react-native: build/bin.js
   checksum: aab22f10eda679050e7eb556ded0a6b0dc57ce44ffe1c423d4202295cbc913d93a4ec510d34644bd23971e67f2800de75583b0125f9a949da55586f48f08dac0
+  languageName: node
+  linkType: hard
+
+"@react-native-community/slider@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "@react-native-community/slider@npm:4.5.5"
+  checksum: 8d818e7f505694269bf8009c8c5db89efc3e9bb56054a1835613b6d7431356370bef9ce23d269519163097fe506e3f5420b34ba2c553bf380d1f144277a11942
   languageName: node
   linkType: hard
 
@@ -8750,7 +8777,10 @@ __metadata:
     "@babel/runtime": ^7.20.0
     "@gorhom/bottom-sheet": ^5.0.4
     "@hookform/resolvers": ^3.9.0
+    "@miblanchard/react-native-slider": ^2.6.0
+    "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-native-community/blur": ^4.4.1
+    "@react-native-community/slider": ^4.5.5
     "@react-native/eslint-config": ^0.72.2
     "@react-native/metro-config": ^0.72.12
     "@react-navigation/bottom-tabs": ^6.6.1
