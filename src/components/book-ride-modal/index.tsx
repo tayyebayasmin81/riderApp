@@ -15,14 +15,16 @@ type Props = {
   onPressConfirm: () => void;
   handleSheetChanges: (index: number) => void;
   sheetIndex: number;
-  bottomSheetModalRef: React.RefObject<BottomSheetModalMethods>;
+  bottomSheetModalRef?: React.RefObject<BottomSheetModalMethods>;
+  title?: string;
 };
 
 const BookRideModal: React.FC<Props> = ({
-  onPressConfirm,
+  title,
   bottomSheetModalRef,
   handleSheetChanges,
   sheetIndex,
+  onPressConfirm,
 }) => {
   const [selectedTab, setSelectedTab] = useState('Schools');
   const [selectedHeartIndices, setSelectedHeartIndices] = useState<number[]>(
@@ -60,7 +62,7 @@ const BookRideModal: React.FC<Props> = ({
           {/* Modal Content */}
           <View style={styles.modalContainer}>
             <View style={styles.inputRow}>
-              <Text style={styles.title}>Destination</Text>
+              <Text style={styles.title}>{title}</Text>
               <TouchableOpacity
                 style={styles.row}
                 onPress={() => setOpen(true)}>
@@ -145,7 +147,7 @@ const BookRideModal: React.FC<Props> = ({
         <Button
           containerStyle={styles.confirmButton}
           onPress={onPressConfirm}
-          title="Confirm Destination"
+          title={`Confirm ${title}`}
         />
       )}
       <DatePicker

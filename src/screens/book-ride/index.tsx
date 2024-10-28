@@ -11,17 +11,32 @@ import {ScreenWrapper} from 'react-native-screen-wrapper';
 import {ScreenNames} from '~routes';
 import styles from './styles';
 import AppColors from '~utils/app-colors';
-import {BookRideModal, DayPickerBottomSheet, Header} from '~components';
+import {
+  BookRideModal,
+  DayPickerBottomSheet,
+  Header,
+  SecretWord,
+  SelectYouth,
+} from '~components';
 import {Icons} from '~assets/images';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {BlurView} from '@react-native-community/blur';
 
-const BookRide = ({navigation}: NativeStackScreenProps<any>) => {
+const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
+  const selection = route?.params?.selection;
   const [sheetIndex, setSheetIndex] = useState(0);
+  const [selectedTitle, setSelecteditle] = useState('Destination');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleModalChange = (index: number) => {
+    setIsModalOpen(index >= 0);
+  };
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const repeatTripsModalRef = useRef<BottomSheetModal>(null);
+  const selectYouthModalRef = useRef<BottomSheetModal>(null);
+  const secretWordModalRef = useRef<BottomSheetModal>(null);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -34,8 +49,17 @@ const BookRide = ({navigation}: NativeStackScreenProps<any>) => {
     bottomSheetModalRef.current?.present();
   }, []);
 
+  useEffect(() => {
+    if (selection) {
+      selectYouthModalRef?.current?.present();
+    }
+  }, [selection]);
+
   return (
-    <ScreenWrapper statusBarColor={AppColors.primary} scrollType="keyboard">
+    <ScreenWrapper
+      statusBarColor={AppColors.primary}
+      scrollType="keyboard"
+      translucent>
       <View style={styles.container}>
         <Header
           title={'Location'}
@@ -49,7 +73,7 @@ const BookRide = ({navigation}: NativeStackScreenProps<any>) => {
           activeOpacity={1}
           onPress={() => bottomSheetModalRef.current?.present()}>
           <ImageBackground source={Icons.map} style={styles.map}>
-            {sheetIndex === 0 && (
+            {sheetIndex === 0 && selectedTitle !== 'Pickup' && (
               <TouchableOpacity
                 style={styles.rowRepeatButton}
                 onPress={() => {
@@ -63,17 +87,43 @@ const BookRide = ({navigation}: NativeStackScreenProps<any>) => {
             <GestureHandlerRootView>
               <BottomSheetModalProvider>
                 <BookRideModal
-                  onPressConfirm={() => {}}
                   bottomSheetModalRef={bottomSheetModalRef}
                   handleSheetChanges={handleSheetChanges}
                   sheetIndex={sheetIndex}
+                  title={selectedTitle}
+                  onPressConfirm={() => {
+                    if (selectedTitle === 'Destination') {
+                      setSelecteditle('Pickup');
+                    } else {
+                      bottomSheetModalRef.current?.close();
+                      navigation.navigate(ScreenNames.PASSENGER_DETAIL);
+                    }
+                  }}
                 />
                 <DayPickerBottomSheet
                   onPressConfirm={() => repeatTripsModalRef?.current?.close()}
                   repeatTripsModalRef={repeatTripsModalRef}
                 />
+                <SelectYouth
+                  bottomSheetModalRef={selectYouthModalRef}
+                  onPressConfirm={() => secretWordModalRef?.current?.present()}
+                />
               </BottomSheetModalProvider>
             </GestureHandlerRootView>
+            <BottomSheetModalProvider>
+              {isModalOpen && (
+                <BlurView
+                  blurType="light"
+                  blurAmount={8}
+                  style={styles.blurView}
+                />
+              )}
+              <SecretWord
+                handleModalChange={handleModalChange}
+                onPressConfirm={() => {}}
+                modalRef={secretWordModalRef}
+              />
+            </BottomSheetModalProvider>
           </ImageBackground>
         </TouchableOpacity>
       </View>

@@ -10,7 +10,10 @@ import {Icons} from '~assets/images';
 
 const Dashboard = ({navigation}: NativeStackScreenProps<any>) => {
   return (
-    <ScreenWrapper statusBarColor={AppColors.primary} scrollType="none">
+    <ScreenWrapper
+      statusBarColor={AppColors.primary}
+      scrollType="none"
+      translucent>
       <View style={styles.container}>
         <Header
           title={'California'}

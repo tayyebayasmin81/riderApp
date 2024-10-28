@@ -6,7 +6,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import ScreenNames from './routes';
 import BottomTab from './bottom-tabs/bottom';
-import {Account, Rides, Request, Dashboard, BookRide} from '~screens';
+import {
+  Account,
+  Rides,
+  Request,
+  Dashboard,
+  BookRide,
+  PassengerDetail,
+} from '~screens';
 
 const Stack = createNativeStackNavigator();
 const navigationRef = createNavigationContainerRef();
@@ -25,6 +32,10 @@ const Routes = () => {
         <Stack.Screen name={ScreenNames.REQUEST} component={Request} />
         <Stack.Screen name={ScreenNames.ACCOUNT} component={Account} />
         <Stack.Screen name={ScreenNames.BOOK_RIDE} component={BookRide} />
+        <Stack.Screen
+          name={ScreenNames.PASSENGER_DETAIL}
+          component={PassengerDetail}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

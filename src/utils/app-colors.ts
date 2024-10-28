@@ -6,6 +6,7 @@ const AppColors = {
   white: '#ffffff',
   gray: '#8A8A8E',
   gray10: '#D9D9D9',
+  gray30: '#F5F5F5',
   gray20: '#F9F9F9',
   gray90: '#797979',
   lightGray: '#F8FAFC',

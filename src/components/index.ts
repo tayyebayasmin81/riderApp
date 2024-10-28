@@ -5,3 +5,6 @@ export {default as Header} from './header';
 export {default as Button} from './button';
 export {default as BookRideModal} from './book-ride-modal';
 export {default as DayPickerBottomSheet} from './repeat-trips-modal';
+export {default as AddPhotoReminder} from './add-photo-reminder';
+export {default as SelectYouth} from './select-youth';
+export {default as SecretWord} from './secret-word';

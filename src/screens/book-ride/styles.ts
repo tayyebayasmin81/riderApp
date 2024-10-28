@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: width(100),
-    height: height(91.5),
+    height: height(93),
     justifyContent: 'flex-end',
   },
   rowRepeatButton: {
@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     left: '3%',
     position: 'absolute',
     marginTop: width(90),
+  },
+  blurView: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
   repeatTripsTxt: {
     marginLeft: width(1),

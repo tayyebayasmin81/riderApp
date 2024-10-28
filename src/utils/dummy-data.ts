@@ -20,3 +20,11 @@ export const locations = [
     street: 'Umm Ramool St, Karama, Dubai, UAE',
   },
 ];
+
+export const contactdata = [
+  {id: '1', name: 'Johny', selected: false},
+  {id: '2', name: 'Abdullah Anwar', selected: false},
+  {id: '3', name: 'Abu', selected: true},
+  {id: '4', name: 'Muzaffir Mohd', selected: false},
+  {id: '5', name: 'Michelle Sam', selected: false},
+];

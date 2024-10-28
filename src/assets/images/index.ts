@@ -13,4 +13,7 @@ export const Icons = {
   rides: require('./Rides.png'),
   search: require('./search.png'),
   bottom: require('./bottom.png'),
+  child: require('./child.png'),
+  contact: require('./contact.png'),
+  selected: require('./selcted.png'),
 };

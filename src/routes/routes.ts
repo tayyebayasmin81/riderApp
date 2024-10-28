@@ -7,5 +7,6 @@ enum ScreenNames {
   ACCOUNT = 'Account',
   BOTTOM_TABS = 'BottomTabs',
   BOOK_RIDE = 'BookRide',
+  PASSENGER_DETAIL = 'PassengerDetail',
 }
 export default ScreenNames;

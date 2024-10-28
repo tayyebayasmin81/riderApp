@@ -27,6 +27,7 @@ export default function BottomTab() {
         name={ScreenNames.DASHBOARD}
         component={Dashboard}
         options={() => ({
+          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({focused}) => (
             <View style={styles.tabView}>
               <Image
@@ -42,7 +43,7 @@ export default function BottomTab() {
               />
               <CustomText
                 color={AppColors.secondary}
-                size={3}
+                size={2.8}
                 font={FontFamily.appFontMedium}>
                 Dashboard
               </CustomText>
@@ -55,6 +56,7 @@ export default function BottomTab() {
           name={ScreenNames.REQUEST}
           component={Request}
           options={() => ({
+            // eslint-disable-next-line react/no-unstable-nested-components
             tabBarIcon: ({focused}) => (
               <View style={styles.tabView}>
                 <Image
@@ -70,7 +72,7 @@ export default function BottomTab() {
                 />
                 <CustomText
                   color={AppColors.secondary}
-                  size={3}
+                  size={2.8}
                   font={FontFamily.appFontMedium}>
                   Request
                 </CustomText>
@@ -83,6 +85,7 @@ export default function BottomTab() {
         name={ScreenNames.RIDES}
         component={Rides}
         options={() => ({
+          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({focused}) => (
             <View style={styles.tabView}>
               <Image
@@ -98,7 +101,7 @@ export default function BottomTab() {
               />
               <CustomText
                 color={AppColors.secondary}
-                size={3}
+                size={2.8}
                 font={FontFamily.appFontMedium}>
                 Rides
               </CustomText>
@@ -110,6 +113,7 @@ export default function BottomTab() {
         name={ScreenNames.ACCOUNT}
         component={Account}
         options={() => ({
+          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({focused}) => (
             <View style={styles.tabView}>
               <Image
@@ -125,7 +129,7 @@ export default function BottomTab() {
               />
               <CustomText
                 color={AppColors.secondary}
-                size={3}
+                size={2.8}
                 font={FontFamily.appFontMedium}>
                 Account
               </CustomText>
@@ -139,8 +143,8 @@ export default function BottomTab() {
 const styles = StyleSheet.create({
   iconStyle: {
     resizeMode: 'contain',
-    width: width(8),
-    height: height(5),
+    width: width(7),
+    height: height(4.5),
     tintColor: AppColors.primary,
   },
   tabView: {
