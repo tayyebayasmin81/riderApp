@@ -173,7 +173,11 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                 handleModalChange={handleChooseRideModal}
               />
               <VisaCard
-                onPressConfirm={() => {}}
+                onPressConfirm={() => {
+                  navigation.navigate(ScreenNames.PROGRESS);
+                  visaModalRef?.current?.close();
+                  navigation.navigate(ScreenNames.PROGRESS);
+                }}
                 modalRef={visaModalRef}
                 handleModalChange={handleVisaModal}
               />

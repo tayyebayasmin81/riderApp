@@ -12,3 +12,4 @@ export {default as SelectJoinee} from './select-joinee';
 export {default as SplitFare} from './split-fare';
 export {default as ChooseRide} from './choose-ride';
 export {default as VisaCard} from './visa-card';
+export {default as SearchingDriver} from './searching-driver';

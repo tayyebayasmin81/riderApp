@@ -13,6 +13,8 @@ import {
   Dashboard,
   BookRide,
   PassengerDetail,
+  ProgressScreen,
+  SearchingDrivers,
 } from '~screens';
 
 const Stack = createNativeStackNavigator();
@@ -35,6 +37,11 @@ const Routes = () => {
         <Stack.Screen
           name={ScreenNames.PASSENGER_DETAIL}
           component={PassengerDetail}
+        />
+        <Stack.Screen name={ScreenNames.PROGRESS} component={ProgressScreen} />
+        <Stack.Screen
+          name={ScreenNames.SearchingDrivers}
+          component={SearchingDrivers}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -8,5 +8,7 @@ enum ScreenNames {
   BOTTOM_TABS = 'BottomTabs',
   BOOK_RIDE = 'BookRide',
   PASSENGER_DETAIL = 'PassengerDetail',
+  PROGRESS = 'Progress',
+  SearchingDrivers = 'SearchingDrivers',
 }
 export default ScreenNames;

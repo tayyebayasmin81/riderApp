@@ -11,7 +11,6 @@ import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
 import {FontFamily} from '~utils/font-family';
-import {width} from '~utils';
 
 // Component Props
 type Props = {
@@ -89,7 +88,7 @@ const VisaCard: React.FC<Props> = ({
                   </Text>
                 </View>
               </View>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={onPressConfirm}>
                 <ImageBackground source={Icons.btn} style={styles.icon}>
                   <Text style={styles.buttonText}>Hayya!</Text>
                 </ImageBackground>
@@ -102,7 +101,7 @@ const VisaCard: React.FC<Props> = ({
                 <Text style={styles.value}>AED 60-90</Text>
                 <Text style={styles.changeText1}>View breakdown</Text>
               </View>
-              <TouchableOpacity style={styles.button1}>
+              <TouchableOpacity style={styles.button1} onPress={onPressConfirm}>
                 <ImageBackground source={Icons.btn} style={styles.icon}>
                   <Text style={styles.buttonText}>Hayya!</Text>
                 </ImageBackground>
