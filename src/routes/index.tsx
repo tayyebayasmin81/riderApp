@@ -15,6 +15,7 @@ import {
   PassengerDetail,
   ProgressScreen,
   SearchingDrivers,
+  RideTracking,
 } from '~screens';
 
 const Stack = createNativeStackNavigator();
@@ -42,6 +43,10 @@ const Routes = () => {
         <Stack.Screen
           name={ScreenNames.SearchingDrivers}
           component={SearchingDrivers}
+        />
+        <Stack.Screen
+          name={ScreenNames.RIDE_TRACKING}
+          component={RideTracking}
         />
       </Stack.Navigator>
     </NavigationContainer>

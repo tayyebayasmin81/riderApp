@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React from 'react';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {rideOptions} from '~utils/dummy-data';
@@ -55,18 +55,17 @@ const ChooseRide: React.FC<Props> = ({
           {/* Modal Content */}
           <View style={styles.modalContainer}>
             <Text style={styles.title}>Choose your ride</Text>
-            <FlatList
-              data={rideOptions}
-              renderItem={({item}) => (
+            <ScrollView>
+              {rideOptions.map(item => (
                 <RideOptionItem
+                  key={item.id}
                   title={item.title}
                   seats={item.seats}
                   description={item.description}
                   color={item.color}
                 />
-              )}
-              keyExtractor={item => item.id}
-            />
+              ))}
+            </ScrollView>
           </View>
         </BottomSheetView>
       </BottomSheetModal>

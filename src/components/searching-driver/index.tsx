@@ -5,6 +5,8 @@ import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
 import {Image} from 'react-native';
+import AppColors from '~utils/app-colors';
+import {FontFamily} from '~utils/font-family';
 
 // Component Props
 type Props = {
@@ -55,7 +57,14 @@ const SearchingDriver: React.FC<Props> = ({modalRef}) => {
               <View style={styles.detailRow}>
                 <Image source={Icons.car} style={styles.icon} />
 
-                <Text style={[styles.detailText, {color: 'blue'}]}>
+                <Text
+                  style={[
+                    styles.detailText,
+                    {
+                      color: AppColors.primary,
+                      fontFamily: FontFamily.appFontSemiBold,
+                    },
+                  ]}>
                   Eco-Friendly
                 </Text>
               </View>

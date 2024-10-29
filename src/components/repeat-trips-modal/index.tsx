@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Button} from '~components';
@@ -91,14 +91,14 @@ const RepeatTripsModal: React.FC<Props> = ({
           </View>
 
           {/* Days of the Week */}
-          <FlatList
-            data={daysOfWeek}
+          <ScrollView
             horizontal
-            renderItem={renderDay}
-            keyExtractor={item => item}
             contentContainerStyle={styles.daysContainer}
-            showsHorizontalScrollIndicator={false}
-          />
+            showsHorizontalScrollIndicator={false}>
+            {daysOfWeek.map(item => (
+              <View key={item}>{renderDay({item})}</View>
+            ))}
+          </ScrollView>
 
           {/* Continue Button */}
           <Button

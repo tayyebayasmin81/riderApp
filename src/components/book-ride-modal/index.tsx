@@ -1,6 +1,12 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import AppColors from '~utils/app-colors';
 import styles from './styles';
 import {Image} from 'react-native';
@@ -80,15 +86,14 @@ const BookRideModal: React.FC<Props> = ({
               />
             </View>
             {/* Tab options like Schools, Universities, etc */}
-            <FlatList
-              data={tabs}
+            <ScrollView
               horizontal
               style={styles.rowFlatlist}
               contentContainerStyle={styles.tabsContainer}
-              showsHorizontalScrollIndicator={false}
-              keyExtractor={item => item}
-              renderItem={({item}) => (
+              showsHorizontalScrollIndicator={false}>
+              {tabs.map(item => (
                 <TouchableOpacity
+                  key={item}
                   activeOpacity={1}
                   onPress={() => handleTabPress(item)}>
                   <Text
@@ -104,16 +109,13 @@ const BookRideModal: React.FC<Props> = ({
                     {item}
                   </Text>
                 </TouchableOpacity>
-              )}
-            />
+              ))}
+            </ScrollView>
 
             {/* List of locations */}
-            <FlatList
-              data={locations}
-              contentContainerStyle={styles.locationList}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({item, index}) => (
-                <View style={styles.locationItem}>
+            <ScrollView contentContainerStyle={styles.locationList}>
+              {locations.map((item, index) => (
+                <View key={index.toString()} style={styles.locationItem}>
                   <Image source={Icons.location} style={styles.searchIcon} />
                   <View>
                     <Text style={styles.locationTitle} numberOfLines={1}>
@@ -131,14 +133,14 @@ const BookRideModal: React.FC<Props> = ({
                         {
                           tintColor: selectedHeartIndices.includes(index)
                             ? AppColors.primary
-                            : AppColors.gray, // Change color based on selection
+                            : AppColors.gray,
                         },
                       ]}
                     />
                   </TouchableOpacity>
                 </View>
-              )}
-            />
+              ))}
+            </ScrollView>
             {/* Confirm Pickup Button */}
           </View>
         </BottomSheetView>

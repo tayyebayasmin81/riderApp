@@ -32,4 +32,5 @@ export const Icons = {
   microphone: require('./microphone.png'),
   phone: require('./phone.png'),
   orderProgress: require('./orderProgress.png'),
+  arrowLeft: require('./Arrow-left.png'),
 };

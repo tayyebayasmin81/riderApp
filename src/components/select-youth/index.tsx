@@ -1,6 +1,12 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import AppColors from '~utils/app-colors';
 import styles from './styles';
 import {Image} from 'react-native';
@@ -74,11 +80,11 @@ const SelectYouth: React.FC<Props> = ({
                 placeholder="Search"
               />
             </View>
-            <FlatList
-              data={listData}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-            />
+            <ScrollView showsHorizontalScrollIndicator={false}>
+              {listData.map(item => (
+                <View key={item.id}>{renderItem({item})}</View>
+              ))}
+            </ScrollView>
             <Text style={styles.addTxt}>+ Add new Uzros </Text>
             <Button
               containerStyle={styles.confirmButton}

@@ -78,7 +78,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   return (
     <ScreenWrapper
       statusBarColor={AppColors.primary}
-      scrollType="keyboard"
+      scrollType="none"
       translucent>
       <View style={styles.container}>
         <Header
