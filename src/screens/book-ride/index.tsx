@@ -126,7 +126,11 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                 />
                 <SelectYouth
                   bottomSheetModalRef={selectYouthModalRef}
-                  onPressConfirm={() => secretWordModalRef?.current?.present()}
+                  onPressConfirm={() => {
+                    bottomSheetModalRef?.current?.close();
+                    repeatTripsModalRef?.current?.close();
+                    secretWordModalRef?.current?.present();
+                  }}
                 />
               </BottomSheetModalProvider>
             </GestureHandlerRootView>

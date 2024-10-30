@@ -14,3 +14,4 @@ export {default as ChooseRide} from './choose-ride';
 export {default as VisaCard} from './visa-card';
 export {default as SearchingDriver} from './searching-driver';
 export {default as RideTrack} from './tracking';
+export {default as RiderSummary} from './ride-summary';

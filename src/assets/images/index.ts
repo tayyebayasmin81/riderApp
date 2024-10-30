@@ -33,4 +33,8 @@ export const Icons = {
   phone: require('./phone.png'),
   orderProgress: require('./orderProgress.png'),
   arrowLeft: require('./Arrow-left.png'),
+  loader3: require('./loader3.png'),
+  share: require('./share.png'),
+  Clock1: require('./clock1.png'),
+  star: require('./Star.png'),
 };

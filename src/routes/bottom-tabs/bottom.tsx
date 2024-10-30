@@ -7,7 +7,7 @@ import ScreenNames from '~routes/routes';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
 import {height, width} from '~utils';
-import {Account, Dashboard, Request, Rides} from '~screens';
+import {Account, Dashboard, Request, Rides, RideSummary} from '~screens';
 const Tab = createBottomTabNavigator();
 
 export default function BottomTab() {
@@ -82,8 +82,8 @@ export default function BottomTab() {
         />
       }
       <Tab.Screen
-        name={ScreenNames.RIDES}
-        component={Rides}
+        name={ScreenNames.RIDE_SUMMARY}
+        component={RideSummary}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({focused}) => (

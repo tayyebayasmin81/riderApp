@@ -7,3 +7,4 @@ export {default as PassengerDetail} from './passenger-detail';
 export {default as ProgressScreen} from './progress';
 export {default as SearchingDrivers} from './searching-drivers';
 export {default as RideTracking} from './ride-tracking';
+export {default as RideSummary} from './ride-summary';

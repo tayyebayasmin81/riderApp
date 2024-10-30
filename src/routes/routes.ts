@@ -11,5 +11,6 @@ enum ScreenNames {
   PROGRESS = 'Progress',
   SearchingDrivers = 'SearchingDrivers',
   RIDE_TRACKING = 'RideTracking',
+  RIDE_SUMMARY = 'RideSummary',
 }
 export default ScreenNames;
