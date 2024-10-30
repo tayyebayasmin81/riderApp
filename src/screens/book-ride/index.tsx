@@ -12,14 +12,18 @@ import {ScreenNames} from '~routes';
 import styles from './styles';
 import AppColors from '~utils/app-colors';
 import {
+  AddCard,
   BookRideModal,
+  ChangeCard,
   ChooseRide,
   DayPickerBottomSheet,
   Header,
+  PromoCard,
   SecretWord,
   SelectJoinee,
   SelectYouth,
   SplitFare,
+  VerifyCard,
   VisaCard,
 } from '~components';
 import {Icons} from '~assets/images';
@@ -35,6 +39,10 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const [isSplitModalOpen, setIsSplitModalOpen] = useState(false);
   const [isChooseRideModalOpen, setChooseRideModalOpen] = useState(false);
   const [isVisaModalOpen, setVisaModalOpen] = useState(false);
+  const [isChangeCardOpen, setChangeCardOpen] = useState(false);
+  const [isAddCardOpen, setAddCardOpen] = useState(false);
+  const [verifyCardOpen, setVerifyCardOpen] = useState(false);
+  const [promoCardOpen, setPromoCardOpen] = useState(false);
 
   const handleModalChange = (index: number) => {
     setIsModalOpen(index >= 0);
@@ -48,6 +56,18 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const handleVisaModal = (index: number) => {
     setVisaModalOpen(index >= 0);
   };
+  const handleChangeCardModal = (index: number) => {
+    setChangeCardOpen(index >= 0);
+  };
+  const handleAddCardModal = (index: number) => {
+    setAddCardOpen(index >= 0);
+  };
+  const handleVerifyCardModal = (index: number) => {
+    setVerifyCardOpen(index >= 0);
+  };
+  const handlePromoCardModal = (index: number) => {
+    setPromoCardOpen(index >= 0);
+  };
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const repeatTripsModalRef = useRef<BottomSheetModal>(null);
@@ -57,6 +77,10 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const splitFareModalRef = useRef<BottomSheetModal>(null);
   const chooseRideModalRef = useRef<BottomSheetModal>(null);
   const visaModalRef = useRef<BottomSheetModal>(null);
+  const changeCardModalRef = useRef<BottomSheetModal>(null);
+  const addCardModalRef = useRef<BottomSheetModal>(null);
+  const verifyCardModalRef = useRef<BottomSheetModal>(null);
+  const PromoCodeModalRef = useRef<BottomSheetModal>(null);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -138,7 +162,11 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
               {(isModalOpen ||
                 isSplitModalOpen ||
                 isChooseRideModalOpen ||
-                isVisaModalOpen) && (
+                isVisaModalOpen ||
+                isChangeCardOpen ||
+                isChangeCardOpen ||
+                isAddCardOpen ||
+                verifyCardOpen) && (
                 <BlurView
                   blurType="light"
                   blurAmount={8}
@@ -178,12 +206,50 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
               />
               <VisaCard
                 onPressConfirm={() => {
-                  navigation.navigate(ScreenNames.PROGRESS);
                   visaModalRef?.current?.close();
                   navigation.navigate(ScreenNames.PROGRESS);
                 }}
+                onPressPromo={() => {
+                  PromoCodeModalRef?.current?.present();
+                }}
                 modalRef={visaModalRef}
                 handleModalChange={handleVisaModal}
+                onPressChange={() => {
+                  visaModalRef?.current?.close();
+                  changeCardModalRef?.current?.present();
+                }}
+              />
+              <PromoCard
+                onPressConfirm={() => {
+                  PromoCodeModalRef?.current?.close();
+                }}
+                modalRef={PromoCodeModalRef}
+                handleModalChange={handlePromoCardModal}
+              />
+              <ChangeCard
+                onPressConfirm={() => {}}
+                modalRef={changeCardModalRef}
+                handleModalChange={handleChangeCardModal}
+                onPressAddCard={() => {
+                  changeCardModalRef?.current?.close();
+                  addCardModalRef?.current?.present();
+                }}
+              />
+              <AddCard
+                onPressConfirm={() => {
+                  addCardModalRef?.current?.close();
+                  verifyCardModalRef?.current?.present();
+                }}
+                modalRef={addCardModalRef}
+                handleModalChange={handleAddCardModal}
+              />
+              <VerifyCard
+                onPressConfirm={() => {
+                  verifyCardModalRef?.current?.close();
+                  navigation.replace(ScreenNames.VERIFYING);
+                }}
+                modalRef={verifyCardModalRef}
+                handleModalChange={handleVerifyCardModal}
               />
             </BottomSheetModalProvider>
           </ImageBackground>

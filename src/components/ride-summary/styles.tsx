@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     paddingHorizontal: 22,
     paddingVertical: 5,
+    flex: 1,
   },
   bottomSheetModal: {
     borderRadius: 35,
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   commentBox: {
+    color: AppColors.black,
     borderColor: '#E0E0E0',
     borderWidth: 1,
     borderRadius: 10,

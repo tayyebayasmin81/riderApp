@@ -15,14 +15,18 @@ import {FontFamily} from '~utils/font-family';
 // Component Props
 type Props = {
   onPressConfirm: () => void;
+  onPressChange: () => void;
   modalRef?: React.RefObject<BottomSheetModalMethods>;
   handleModalChange: (index: number) => void;
+  onPressPromo: () => void;
 };
 
 const VisaCard: React.FC<Props> = ({
   modalRef,
   onPressConfirm,
+  onPressChange,
   handleModalChange,
+  onPressPromo,
 }) => {
   const [index, setIndex] = useState(0);
   return (
@@ -42,7 +46,9 @@ const VisaCard: React.FC<Props> = ({
             <View style={styles.cardDetails}>
               <Image source={Icons.visa} style={styles.visaIcon} />
               <Text style={styles.cardText}>****7811</Text>
-              <Text style={styles.changeText}>Change</Text>
+              <TouchableOpacity onPress={onPressChange}>
+                <Text style={styles.changeText}>Change</Text>
+              </TouchableOpacity>
             </View>
             <View>
               <View style={styles.row1}>
@@ -50,14 +56,14 @@ const VisaCard: React.FC<Props> = ({
                 <Image source={Icons.up} style={styles.upIcon} />
               </View>
 
-              <View style={styles.row1}>
+              <TouchableOpacity style={styles.row1} onPress={onPressPromo}>
                 <Image
                   source={Icons.token}
                   style={styles.tokenIcon}
                   resizeMode="contain"
                 />
                 <Text style={styles.promoCodeText}>PROMO CODE</Text>
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.line} />

@@ -17,6 +17,9 @@ import {
   SearchingDrivers,
   RideTracking,
   RideSummary,
+  Verifying,
+  VerifyingError,
+  VerifyingDone,
 } from '~screens';
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +51,15 @@ const Routes = () => {
         <Stack.Screen
           name={ScreenNames.RIDE_TRACKING}
           component={RideTracking}
+        />
+        <Stack.Screen name={ScreenNames.VERIFYING} component={Verifying} />
+        <Stack.Screen
+          name={ScreenNames.VERIFYING_ERROR}
+          component={VerifyingError}
+        />
+        <Stack.Screen
+          name={ScreenNames.VERIFYING_DONE}
+          component={VerifyingDone}
         />
         <Stack.Screen name={ScreenNames.RIDE_SUMMARY} component={RideSummary} />
       </Stack.Navigator>

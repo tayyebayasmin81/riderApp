@@ -12,5 +12,8 @@ enum ScreenNames {
   SearchingDrivers = 'SearchingDrivers',
   RIDE_TRACKING = 'RideTracking',
   RIDE_SUMMARY = 'RideSummary',
+  VERIFYING = 'Verifying',
+  VERIFYING_ERROR = 'VerifyingError',
+  VERIFYING_DONE = 'VerifyingDone',
 }
 export default ScreenNames;

@@ -8,3 +8,6 @@ export {default as ProgressScreen} from './progress';
 export {default as SearchingDrivers} from './searching-drivers';
 export {default as RideTracking} from './ride-tracking';
 export {default as RideSummary} from './ride-summary';
+export {default as Verifying} from './verifying';
+export {default as VerifyingError} from './verifying-error';
+export {default as VerifyingDone} from './verifying-done';
