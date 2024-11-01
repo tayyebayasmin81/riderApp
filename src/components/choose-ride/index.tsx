@@ -34,12 +34,15 @@ const ChooseRide: React.FC<Props> = ({
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() => onPressConfirm()}>
-      <View>
+      <View style={styles.carContainer}>
         <Image source={Icons.car} style={styles.image} />
       </View>
       <View style={styles.textContainer}>
         <Text style={[styles.title1, {color}]}>{title}</Text>
-        <Text style={styles.seats}>👤 {seats}</Text>
+        <View style={styles.row2}>
+          <Image source={Icons.person} style={styles.person} />
+          <Text style={styles.seats}>{seats}</Text>
+        </View>
         <Text style={styles.description}>{description}</Text>
       </View>
     </TouchableOpacity>
@@ -55,7 +58,15 @@ const ChooseRide: React.FC<Props> = ({
         <BottomSheetView>
           {/* Modal Content */}
           <View style={styles.modalContainer}>
-            <Text style={styles.title}>Choose your ride</Text>
+            <View style={styles.row}>
+              <Image
+                source={Icons.below}
+                style={styles.belowIcon}
+                resizeMode="contain"
+                tintColor="#C0BCBC"
+              />
+              <Text style={styles.title}>Choose your ride</Text>
+            </View>
             <ScrollView>
               {rideOptions.map(item => (
                 <RideOptionItem

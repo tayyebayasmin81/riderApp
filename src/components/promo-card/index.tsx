@@ -35,7 +35,6 @@ const PromoCard: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         onChange={handleModalChange}
-        snapPoints={['90%']}
         enablePanDownToClose={false}
         ref={modalRef}>
         <BottomSheetView>
@@ -53,7 +52,7 @@ const PromoCard: React.FC<Props> = ({
               <TextInput
                 style={[styles.input, error && styles.inputError]}
                 placeholder="Enter Promo Code"
-                placeholderTextColor="#ccc"
+                placeholderTextColor="#8A8A8E"
                 value={promoCode}
                 onChangeText={setPromoCode}
                 onFocus={() => setError(false)} // Reset error on focus

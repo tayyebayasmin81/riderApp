@@ -51,4 +51,6 @@ export const Icons = {
   right: require('./right.png'),
   visa2: require('./visa2.png'),
   verify: require('./verify.png'),
+  person: require('./person.png'),
+  below: require('./below.png'),
 };

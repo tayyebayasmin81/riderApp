@@ -5,7 +5,6 @@ import {FontFamily} from '~utils/font-family';
 
 const styles = StyleSheet.create({
   modalContainer: {
-    paddingHorizontal: 16,
     paddingVertical: 5,
   },
 
@@ -16,42 +15,68 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.gray10,
     width: width(12),
   },
-
+  row: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginHorizontal: width(2),
+  },
+  row2: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  belowIcon: {
+    width: width(9),
+    height: width(9),
+  },
+  person: {
+    resizeMode: 'contain',
+    width: width(2.5),
+    marginRight: width(0.9),
+    height: width(2.5),
+  },
   title: {
+    paddingHorizontal: 10,
     fontSize: 20,
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
   itemContainer: {
+    paddingHorizontal: width(2),
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
+    paddingVertical: 15,
     width: width(100),
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },
   image: {
-    marginLeft: -15,
     width: 50,
     height: 50,
     resizeMode: 'contain',
-    marginRight: 10,
+  },
+  carContainer: {
+    marginRight: width(2),
+    paddingHorizontal: width(2),
+    borderColor: '#DADADA',
+    borderWidth: 2,
+    borderRadius: 8,
   },
   textContainer: {
     flex: 1,
   },
   title1: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: FontFamily.appFontBold,
   },
   seats: {
     fontSize: 12,
-    color: '#666',
+    color: '#8A8A8E',
   },
   description: {
-    fontSize: 12,
-    color: '#666',
+    fontSize: 11,
+    color: '#8A8A8E',
     marginTop: 5,
+    fontFamily: FontFamily.appFontLight,
   },
 });
 export default styles;

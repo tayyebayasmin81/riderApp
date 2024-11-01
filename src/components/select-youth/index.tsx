@@ -62,7 +62,7 @@ const SelectYouth: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={bottomSheetModalRef}
-        snapPoints={['75%', '96%']} // Adjusting snap points
+        snapPoints={['96%']} // Adjusting snap points
       >
         <BottomSheetView>
           {/* Modal Content */}

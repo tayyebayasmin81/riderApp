@@ -30,6 +30,7 @@ const Routes = () => {
       <Stack.Navigator
         initialRouteName={ScreenNames.BOTTOM_TABS}
         screenOptions={{
+          animation: 'slide_from_right',
           headerShown: false,
         }}>
         <Stack.Screen name={ScreenNames.BOTTOM_TABS} component={BottomTab} />
