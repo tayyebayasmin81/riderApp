@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
-import React, {useState} from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Keyboard, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
@@ -35,6 +35,7 @@ const RiderSummary: React.FC<Props> = ({modalRef, handleModalChange}) => {
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
+        snapPoints={['85%']}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}
@@ -82,6 +83,7 @@ const RiderSummary: React.FC<Props> = ({modalRef, handleModalChange}) => {
               value={comment}
               onChangeText={setComment}
               multiline
+              onFocus={() => modalRef?.current?.expand()}
             />
 
             {/* Submit Button */}

@@ -1,6 +1,7 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  Keyboard,
   ScrollView,
   Text,
   TextInput,
@@ -84,6 +85,8 @@ const BookRideModal: React.FC<Props> = ({
                 placeholderTextColor={AppColors.gray90}
                 style={styles.searchInput}
                 placeholder="Enter your destination"
+                onFocus={() => bottomSheetModalRef?.current?.expand()}
+                onSubmitEditing={() => bottomSheetModalRef?.current?.collapse()}
               />
             </View>
             {/* Tab options like Schools, Universities, etc */}

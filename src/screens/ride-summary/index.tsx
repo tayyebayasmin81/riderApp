@@ -19,7 +19,7 @@ const RideSummary = ({navigation}: NativeStackScreenProps<any>) => {
   };
 
   return (
-    <ScreenWrapper statusBarColor={AppColors.primary} scrollType="keyboard">
+    <ScreenWrapper statusBarColor={AppColors.primary} scrollType="none">
       <View style={styles.container}>
         <GestureHandlerRootView>
           <BottomSheetModalProvider>

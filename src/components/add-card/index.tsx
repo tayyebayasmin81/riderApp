@@ -53,7 +53,7 @@ const AddCard: React.FC<Props> = ({
           handleModalChange(index);
         }}
         enablePanDownToClose={false}
-        snapPoints={['90%']}
+        snapPoints={['98%']}
         ref={modalRef}>
         <BottomSheetView>
           <View style={styles.modalContainer}>
@@ -71,6 +71,7 @@ const AddCard: React.FC<Props> = ({
                 placeholderTextColor={AppColors.gray10}
                 keyboardType="numeric"
                 value={cardNumber}
+                onFocus={() => modalRef?.current?.expand()}
                 onChangeText={setCardNumber}
               />
               <Image source={Icons.cardIcon} style={styles.icon} />
@@ -87,6 +88,7 @@ const AddCard: React.FC<Props> = ({
                     placeholder="MM/YY"
                     keyboardType="numeric"
                     value={expiryDate}
+                    onFocus={() => modalRef?.current?.expand()}
                     placeholderTextColor={AppColors.gray}
                     onChangeText={setExpiryDate}
                   />
@@ -102,11 +104,11 @@ const AddCard: React.FC<Props> = ({
                 <View style={styles.halfInputContainer1}>
                   <TextInput
                     style={styles.input1}
-                    placeholder="Enter CVV"
                     keyboardType="numeric"
                     secureTextEntry
                     value={cvv}
                     onChangeText={setCvv}
+                    onFocus={() => modalRef?.current?.expand()}
                   />
                 </View>
                 {cvvError && (
@@ -121,6 +123,7 @@ const AddCard: React.FC<Props> = ({
                 style={styles.input}
                 placeholderTextColor={AppColors.gray10}
                 value={cardHolderName}
+                onFocus={() => modalRef?.current?.expand()}
                 onChangeText={setCardHolderName}
               />
             </View>

@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   modalContainer: {
     paddingHorizontal: 22,
     paddingVertical: 5,
-    flex: 1,
   },
   bottomSheetModal: {
     borderRadius: 35,
