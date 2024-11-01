@@ -17,6 +17,7 @@ const SearchingDriver: React.FC<Props> = ({modalRef}) => {
   return (
     <>
       <BottomSheetModal
+        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}>

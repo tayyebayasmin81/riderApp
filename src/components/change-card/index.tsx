@@ -28,6 +28,7 @@ const ChangeCard: React.FC<Props> = ({
         onChange={index => {
           handleModalChange(index);
         }}
+        enablePanDownToClose={false}
         ref={modalRef}>
         <BottomSheetView>
           <View style={styles.container}>

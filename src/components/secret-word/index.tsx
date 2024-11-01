@@ -23,6 +23,7 @@ const SecretWord: React.FC<Props> = ({
   return (
     <>
       <BottomSheetModal
+        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         onChange={handleModalChange}

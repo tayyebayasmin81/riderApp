@@ -245,6 +245,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
               />
               <VerifyCard
                 onPressConfirm={() => {
+                  setVerifyCardOpen(false);
                   verifyCardModalRef?.current?.close();
                   navigation.replace(ScreenNames.VERIFYING);
                 }}

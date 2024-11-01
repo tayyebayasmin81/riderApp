@@ -38,6 +38,7 @@ const VisaCard: React.FC<Props> = ({
           setIndex(index);
           handleModalChange(index);
         }}
+        enablePanDownToClose={false}
         snapPoints={['25%']}
         ref={modalRef}>
         <BottomSheetView>

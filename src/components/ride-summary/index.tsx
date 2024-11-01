@@ -31,6 +31,7 @@ const RiderSummary: React.FC<Props> = ({modalRef, handleModalChange}) => {
   return (
     <>
       <BottomSheetModal
+        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}

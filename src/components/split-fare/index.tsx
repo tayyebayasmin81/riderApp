@@ -35,6 +35,7 @@ const SplitFare: React.FC<Props> = ({
       <BottomSheetModal
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
+        enablePanDownToClose={false}
         ref={bottomSheetModalRef}
         onChange={handleModalChange}>
         <BottomSheetView>

@@ -26,6 +26,7 @@ const AddPhotoReminder: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
+        enablePanDownToClose={false}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}

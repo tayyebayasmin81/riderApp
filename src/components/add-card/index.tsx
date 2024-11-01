@@ -52,6 +52,7 @@ const AddCard: React.FC<Props> = ({
         onChange={index => {
           handleModalChange(index);
         }}
+        enablePanDownToClose={false}
         snapPoints={['90%']}
         ref={modalRef}>
         <BottomSheetView>

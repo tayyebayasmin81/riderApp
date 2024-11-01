@@ -62,6 +62,7 @@ const BookRideModal: React.FC<Props> = ({
         handleIndicatorStyle={styles.handleIndicator}
         ref={bottomSheetModalRef}
         onChange={handleSheetChanges}
+        enablePanDownToClose={false}
         snapPoints={['60%', '75%', '96%']} // Adjusting snap points
       >
         <BottomSheetView>

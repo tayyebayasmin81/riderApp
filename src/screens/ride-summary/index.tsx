@@ -10,7 +10,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BlurView} from '@react-native-community/blur';
 import {Icons} from '~assets/images';
 
-const Account = ({navigation}: NativeStackScreenProps<any>) => {
+const RideSummary = ({navigation}: NativeStackScreenProps<any>) => {
   const modalRef = useRef<BottomSheetModal>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,10 +19,10 @@ const Account = ({navigation}: NativeStackScreenProps<any>) => {
   };
 
   return (
-    <GestureHandlerRootView>
-      <BottomSheetModalProvider>
-        <ScreenWrapper statusBarColor={AppColors.primary} scrollType="keyboard">
-          <View style={styles.container}>
+    <ScreenWrapper statusBarColor={AppColors.primary} scrollType="keyboard">
+      <View style={styles.container}>
+        <GestureHandlerRootView>
+          <BottomSheetModalProvider>
             <Text style={styles.header}>Ride Summary</Text>
             <Text style={styles.subHeader}>
               Ride complete! Here’s your summary.
@@ -109,11 +109,11 @@ const Account = ({navigation}: NativeStackScreenProps<any>) => {
                 handleModalChange={handleModalChange}
               />
             </View>
-          </View>
-        </ScreenWrapper>
-      </BottomSheetModalProvider>
-    </GestureHandlerRootView>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </View>
+    </ScreenWrapper>
   );
 };
 
-export default Account;
+export default RideSummary;

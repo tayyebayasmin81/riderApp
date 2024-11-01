@@ -9,7 +9,7 @@ export default StyleSheet.create({
     padding: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 35,
+    paddingTop: 20,
     justifyContent: 'space-between',
   },
   titleContainer: {

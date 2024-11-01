@@ -160,6 +160,7 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
         {/* Date Picker Modal */}
         <DatePicker
           modal
+          theme="light"
           open={isDatePickerOpen}
           date={date}
           onConfirm={date => {
