@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   txt2: {
-    color: AppColors.gray,
-    fontFamily: FontFamily.appFontSemiBold,
+    color: '#ABA7A7',
+    fontFamily: FontFamily.appFontMedium,
     fontSize: 16,
   },
   carContainer: {

@@ -1,11 +1,12 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Image, Text, TextInput, View} from 'react-native';
 import AppColors from '~utils/app-colors';
 import styles from './styles';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {width} from '~utils';
+import {Icons} from '~assets/images';
 
 // Component Props
 type Props = {
@@ -34,7 +35,16 @@ const SecretWord: React.FC<Props> = ({
             {!needCarpool && (
               <>
                 <View>
-                  <Text style={styles.title}>Secret Word</Text>
+                  <View style={styles.row}>
+                    <Text style={styles.title}>Secret Word</Text>
+                    <Image
+                      source={Icons.info2}
+                      style={{
+                        width: width(3),
+                        height: width(3),
+                      }}
+                    />
+                  </View>
                   <Text style={styles.subtitle}>
                     For your youth’s safety, the driver will confirm this secret
                     word with your youth before the ride starts. This ensures
@@ -61,11 +71,6 @@ const SecretWord: React.FC<Props> = ({
                   <Text style={styles.title}>
                     Need <Text style={{color: AppColors.primary}}>Carpool</Text>
                     ?
-                  </Text>
-                  <Text style={styles.subtitle}>
-                    For your youth’s safety, the driver will confirm this secret
-                    word with your youth before the ride starts. This ensures
-                    secure pickups.
                   </Text>
                 </View>
                 <Button

@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
   row1: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: width(20),
     justifyContent: 'space-between',
   },
   halfInputContainer: {

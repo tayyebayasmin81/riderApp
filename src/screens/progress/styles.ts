@@ -14,13 +14,14 @@ const styles = StyleSheet.create({
   txt1: {
     color: AppColors.gray,
     fontFamily: FontFamily.appFontMedium,
-    fontSize: 20,
-    marginBottom: width(10),
+    fontSize: 22,
+    marginBottom: width(7),
   },
   txt2: {
     color: AppColors.gray,
-    fontSize: 11,
-    fontWeight: 'bold',
+    fontSize: 11.5,
+    fontStyle: 'italic',
+    fontWeight: '600',
     alignSelf: 'center',
     marginTop: width(7),
     marginHorizontal: width(2),

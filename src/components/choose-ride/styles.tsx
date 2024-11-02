@@ -18,9 +18,11 @@ const styles = StyleSheet.create({
   row: {
     alignItems: 'center',
     flexDirection: 'row',
+
     marginHorizontal: width(2),
   },
   row2: {
+    height: 15,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -66,6 +68,7 @@ const styles = StyleSheet.create({
   },
   title1: {
     fontSize: 16,
+    lineHeight: 18,
     fontFamily: FontFamily.appFontBold,
   },
   seats: {
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
     color: '#8A8A8E',
   },
   description: {
+    lineHeight: 13,
     fontSize: 11,
     color: '#8A8A8E',
     marginTop: 5,

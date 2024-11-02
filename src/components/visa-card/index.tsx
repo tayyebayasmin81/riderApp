@@ -74,7 +74,7 @@ const VisaCard: React.FC<Props> = ({
               <View style={styles.orderSummary}>
                 <View style={styles.row}>
                   <Text style={styles.label}>Total</Text>
-                  <Text style={styles.value}>AED 60-90</Text>
+                  <Text style={styles.value2}>AED 60-90</Text>
                 </View>
                 <View style={styles.row}>
                   <Text style={styles.label}>Platform Fee</Text>

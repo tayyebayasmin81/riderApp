@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   repeatTripsTxt: {
     marginLeft: width(1),
     color: '#4BC18E',
-    fontFamily: FontFamily.appFontSemiBold,
+    fontFamily: FontFamily.appFontBold,
   },
   changesIcon: {
     width: width(7),

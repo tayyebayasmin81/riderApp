@@ -111,9 +111,9 @@ const styles = StyleSheet.create({
     color: AppColors.black,
   },
   rating: {
-    fontSize: 14,
+    fontSize: 13,
     color: AppColors.primary,
-    fontFamily: FontFamily.appFontMedium,
+    fontFamily: FontFamily.appFontSemiBold,
   },
   fareBreakdown: {
     borderTopWidth: 1,

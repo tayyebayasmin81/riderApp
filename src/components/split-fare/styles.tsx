@@ -124,11 +124,14 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 11,
     padding: 10,
-    fontFamily: FontFamily.appFontSemiBold,
+    alignSelf: 'center',
+    fontFamily: FontFamily.appFontBold,
     color: AppColors.gray90,
   },
   icon: {
-    fontSize: 15,
+    width: width(3),
+    height: width(3),
+    resizeMode: 'contain',
   },
   highlight: {
     fontSize: 12,

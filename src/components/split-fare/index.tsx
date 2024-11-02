@@ -1,12 +1,13 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import AppColors from '~utils/app-colors';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import {width} from '~utils';
+import {Icons} from '~assets/images';
 
 // Component Props
 type Props = {
@@ -114,9 +115,9 @@ const SplitFare: React.FC<Props> = ({
             </Text>
 
             <Text style={styles.resultText}>
-              <Text style={styles.icon}>👤{'  '}</Text>
-              Another Parent will share{' '}
-              <Text style={styles.highlight}>{value}%</Text> of the total amount
+              <Image style={styles.icon} source={Icons.person} /> {'  '}Another
+              Parent will share <Text style={styles.highlight}>{value}%</Text>{' '}
+              of the total amount
             </Text>
           </View>
           <Button

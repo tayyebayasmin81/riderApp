@@ -69,17 +69,18 @@ const styles = StyleSheet.create({
   infoText: {
     textAlign: 'center',
     color: '#797979',
+    fontFamily: FontFamily.appFontSemiBold,
     marginBottom: 20,
     marginVertical: 15,
     paddingHorizontal: 20,
-    fontSize: 10,
+    fontSize: 9.5,
   },
   blurView: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
   label: {
-    fontFamily: FontFamily.appFontMedium,
+    fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.black,
     marginVertical: 5,
     fontSize: 14,
@@ -119,6 +120,7 @@ const styles = StyleSheet.create({
   },
 
   selectedIcon: {
+    marginRight: width(3),
     width: width(6),
     height: width(6),
   },
@@ -154,13 +156,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FontFamily.appFontMedium,
     marginLeft: width(2),
-    marginRight: 20,
+    marginRight: width(10),
   },
   selectedGenderText: {
     color: '#fff',
     fontSize: 16,
   },
   Circle: {
+    marginRight: width(3),
     width: width(5.5),
     height: width(5.5),
     borderColor: AppColors.primary,

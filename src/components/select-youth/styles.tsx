@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontBold,
   },
   subtitle: {
-    fontSize: 10,
-    color: AppColors.gray90,
+    fontSize: 11,
+    color: '#797979',
     fontFamily: FontFamily.appFontSemiBold,
   },
   itemContainer: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   addTxt: {
     color: AppColors.primary,
     alignSelf: 'center',
-    fontFamily: FontFamily.appFontRegular,
+    fontFamily: FontFamily.appFontMedium,
     marginTop: width(8),
   },
   nameText: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     height: width(12),
     color: AppColors.black,
     width: width(75),
-    fontFamily: FontFamily.appFontRegular,
+    fontFamily: FontFamily.appFontSemiBold,
   },
 });
 export default styles;

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginTop: width(3),
     color: AppColors.black,
     fontSize: 15,
-    fontFamily: FontFamily.appFontSemiBold,
+    fontFamily: FontFamily.appFontBold,
   },
   locationContainer: {
     paddingLeft: 30,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   locationText: {
-    fontFamily: FontFamily.appFontSemiBold,
+    fontFamily: FontFamily.appFontMedium,
     fontSize: 14,
     color: AppColors.gray,
   },
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
   },
   detailText: {
     color: AppColors.black,
-    fontSize: 14,
+    fontSize: 13,
     marginLeft: 8,
-    fontFamily: FontFamily.appFontRegular,
+    fontFamily: FontFamily.appFontMedium,
   },
   detailTitle: {
     color: AppColors.gray,

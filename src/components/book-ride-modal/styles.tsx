@@ -62,16 +62,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   locationTitle: {
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: FontFamily.appFontBold,
     color: AppColors.black,
     width: width(82),
     lineHeight: 16,
+    fontWeight: '700',
   },
   locationSubtext: {
     lineHeight: 13,
-    fontSize: 12,
-    color: '#666',
+    fontFamily: FontFamily.appFontMedium,
+    fontSize: 10.5,
+    color: '#8A8A8E',
   },
   confirmButton: {
     width: width(92),

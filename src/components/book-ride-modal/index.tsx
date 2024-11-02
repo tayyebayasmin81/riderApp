@@ -1,7 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
-  Keyboard,
   ScrollView,
   Text,
   TextInput,
@@ -56,6 +55,16 @@ const BookRideModal: React.FC<Props> = ({
   const handleTabPress = (tab: string) => {
     setSelectedTab(tab);
   };
+
+  const isToday = (date: Date) => {
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  };
+
   return (
     <>
       <BottomSheetModal
@@ -75,8 +84,12 @@ const BookRideModal: React.FC<Props> = ({
                 style={styles.row}
                 onPress={() => setOpen(true)}>
                 <Image source={Icons.calender} style={styles.calenderIcon} />
-                <Text style={styles.timeText}>Now</Text>
-                <Image source={Icons.bottom} style={styles.bottomIcon} />
+                <Text style={styles.timeText}>
+                  {isToday(date) ? 'Now' : date.toLocaleDateString()}
+                </Text>
+                {isToday(date) && (
+                  <Image source={Icons.bottom} style={styles.bottomIcon} />
+                )}
               </TouchableOpacity>
             </View>
             <View style={styles.searchContainer}>

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   rideInfoNumber: {
     marginTop: width(1),
     fontSize: 16,
-    fontFamily: FontFamily.appFontMedium,
+    fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.black,
     alignSelf: 'flex-start',
   },

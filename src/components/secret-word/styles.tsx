@@ -17,12 +17,13 @@ const styles = StyleSheet.create({
   },
 
   title: {
+    marginRight: width(1),
     fontSize: 20,
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
   subtitle: {
-    fontSize: 10,
+    fontSize: 9,
     color: AppColors.gray90,
     fontFamily: FontFamily.appFontSemiBold,
   },
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
     width: width(92),
     marginBottom: width(3),
     zIndex: 100,
+  },
+  row: {
+    flexDirection: 'row',
   },
   withoutBtn: {
     marginVertical: width(2),

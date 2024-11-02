@@ -106,18 +106,25 @@ const styles = StyleSheet.create({
     color: AppColors.gray,
     fontFamily: FontFamily.appFontSemiBold,
   },
+
   value: {
+    fontSize: 15,
+    color: '#000',
+    lineHeight: 18,
+    fontFamily: FontFamily.appFontBold,
+  },
+  value2: {
     fontSize: 15,
     color: '#000',
     lineHeight: 18,
     fontFamily: FontFamily.appFontSemiBold,
   },
-
   free: {
     color: '#02D624',
     fontFamily: FontFamily.appFontBold,
   },
   discount: {
+    fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.primary,
   },
   button: {

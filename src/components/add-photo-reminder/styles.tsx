@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
   infoText: {
     textAlign: 'center',
     color: '#555759',
-    fontFamily: FontFamily.appFontMedium,
+    fontFamily: FontFamily.appFontSemiBold,
     marginBottom: 20,
     marginVertical: 15,
     paddingHorizontal: 20,
-    fontSize: 11.5,
+    fontSize: 12,
   },
   modalContainer: {
     paddingHorizontal: 16,
