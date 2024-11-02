@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     color: AppColors.black,
-    fontSize: 17,
+    fontSize: 13,
     fontFamily: FontFamily.appFontBold,
   },
 
