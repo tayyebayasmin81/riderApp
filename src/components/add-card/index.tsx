@@ -44,6 +44,16 @@ const AddCard: React.FC<Props> = ({
     // Call onPressConfirm if there are no errors
     onPressConfirm();
   };
+
+  const handleExpiryDateChange = (text: string) => {
+    // Auto add slash after entering month
+    if (text.length === 2 && expiryDate.length === 1) {
+      setExpiryDate(text + '/');
+    } else if (text.length <= 5) {
+      // Limit length to MM/YY
+      setExpiryDate(text);
+    }
+  };
   return (
     <>
       <BottomSheetModal
@@ -90,7 +100,7 @@ const AddCard: React.FC<Props> = ({
                     value={expiryDate}
                     onFocus={() => modalRef?.current?.expand()}
                     placeholderTextColor={AppColors.gray}
-                    onChangeText={setExpiryDate}
+                    onChangeText={handleExpiryDateChange}
                   />
                 </View>
                 {expiryDateError && (

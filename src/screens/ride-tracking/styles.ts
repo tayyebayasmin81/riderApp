@@ -13,7 +13,10 @@ const styles = StyleSheet.create({
     width: width(100),
     height: height(100),
   },
-
+  blurView: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+  },
   car: {
     width: width(20),
     height: height(12),

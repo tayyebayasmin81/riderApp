@@ -10,9 +10,10 @@ import AppColors from '~utils/app-colors';
 // Component Props
 type Props = {
   modalRef?: React.RefObject<BottomSheetModalMethods>;
+  onGotoNext: () => void;
 };
 
-const RideTrack: React.FC<Props> = ({modalRef}) => {
+const RideTrack: React.FC<Props> = ({modalRef, onGotoNext}) => {
   const [arrive, setIsArrive] = useState(false);
   const [booked, setIsBooked] = useState(false);
 
@@ -26,7 +27,12 @@ const RideTrack: React.FC<Props> = ({modalRef}) => {
       setIsArrive(false);
       setIsBooked(true);
     }, 12000);
+    setTimeout(() => {
+      setIsBooked(false);
+      onGotoNext();
+    }, 24000);
   }, []);
+
   return (
     <>
       <BottomSheetModal

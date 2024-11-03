@@ -1,23 +1,16 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {ScreenWrapper} from 'react-native-screen-wrapper';
 import styles from './styles';
 import AppColors from '~utils/app-colors';
-import {Button, RiderSummary} from '~components';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {Button} from '~components';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {BlurView} from '@react-native-community/blur';
 import {Icons} from '~assets/images';
+import {ScreenNames} from '~routes';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 const RideSummary = ({navigation}: NativeStackScreenProps<any>) => {
-  const modalRef = useRef<BottomSheetModal>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleModalChange = (index: number) => {
-    setIsModalOpen(index >= 0);
-  };
-
   return (
     <ScreenWrapper statusBarColor={AppColors.primary} scrollType="none">
       <View style={styles.container}>
@@ -58,11 +51,7 @@ const RideSummary = ({navigation}: NativeStackScreenProps<any>) => {
               </View>
             </View>
             {/* Driver Info */}
-            <TouchableOpacity
-              style={styles.driverInfo}
-              onPress={() => {
-                modalRef?.current?.present();
-              }}>
+            <TouchableOpacity style={styles.driverInfo}>
               <View>
                 <Text style={styles.driverName}>Naser Abdullah</Text>
                 <Text style={styles.rating}>Your rating ★★★★☆</Text>
@@ -92,23 +81,9 @@ const RideSummary = ({navigation}: NativeStackScreenProps<any>) => {
             {/* Done Button */}
             <Button
               containerStyle={styles.confirmButton}
-              onPress={() => {}}
+              onPress={() => navigation?.navigate(ScreenNames.BOTTOM_TABS)}
               title="Done"
             />
-            {isModalOpen && (
-              <BlurView
-                blurType="light"
-                blurAmount={8}
-                style={styles.blurView}
-              />
-            )}
-            <View>
-              <RiderSummary
-                modalRef={modalRef}
-                onPressConfirm={() => {}}
-                handleModalChange={handleModalChange}
-              />
-            </View>
           </BottomSheetModalProvider>
         </GestureHandlerRootView>
       </View>

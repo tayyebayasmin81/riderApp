@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
-import React, {useEffect, useState} from 'react';
-import {Keyboard, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
@@ -14,7 +14,11 @@ type Props = {
   handleModalChange: (index: number) => void;
 };
 
-const RiderSummary: React.FC<Props> = ({modalRef, handleModalChange}) => {
+const RiderSummary: React.FC<Props> = ({
+  modalRef,
+  handleModalChange,
+  onPressConfirm,
+}) => {
   const [rating, setRating] = useState(2);
   const [comment, setComment] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -89,7 +93,9 @@ const RiderSummary: React.FC<Props> = ({modalRef, handleModalChange}) => {
             {/* Submit Button */}
             <Button
               containerStyle={styles.confirmButton}
-              onPress={() => {}}
+              onPress={() => {
+                onPressConfirm();
+              }}
               title="Submit"
             />
           </View>

@@ -9,10 +9,6 @@ const styles = StyleSheet.create({
     height: height(100),
     backgroundColor: AppColors.white,
   },
-  blurView: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  },
   locationContainer: {
     paddingLeft: 30,
     marginBottom: 16,

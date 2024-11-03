@@ -26,7 +26,10 @@ const Header: React.FC<HeaderProps> = ({
     <View style={styles.topBar}>
       {/* Back Button */}
       {showBackButton && (
-        <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
+        <TouchableOpacity
+          onPress={onBackPress}
+          style={styles.backButton}
+          activeOpacity={1}>
           <Image source={Icons.left} resizeMode="contain" style={styles.icon} />
         </TouchableOpacity>
       )}

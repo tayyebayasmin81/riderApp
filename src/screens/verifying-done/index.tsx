@@ -7,6 +7,7 @@ import {Image} from 'react-native';
 import {ScreenWrapper} from 'react-native-screen-wrapper';
 import AppColors from '~utils/app-colors';
 import {Button} from '~components';
+import {ScreenNames} from '~routes';
 
 const VerifyingDone = ({navigation}: NativeStackScreenProps<any>) => {
   return (
@@ -17,7 +18,9 @@ const VerifyingDone = ({navigation}: NativeStackScreenProps<any>) => {
       translucent>
       <View style={styles.container}>
         {/* Back Button */}
-        <TouchableOpacity style={styles.backButton} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation?.goBack()}>
           <Image source={Icons.arrowLeft} style={styles.backIcon} />
         </TouchableOpacity>
         <View>
@@ -34,7 +37,11 @@ const VerifyingDone = ({navigation}: NativeStackScreenProps<any>) => {
         {/* Security Note */}
         <Button
           containerStyle={styles.confirmButton}
-          onPress={() => {}}
+          onPress={() => {
+            navigation?.navigate(ScreenNames?.BOOK_RIDE, {
+              showVisaCard: true,
+            });
+          }}
           title="Continue"
         />
       </View>

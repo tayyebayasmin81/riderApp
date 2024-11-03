@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   icon1: {
+    marginTop: width(3),
     width: width(7),
     height: width(7),
     resizeMode: 'contain',

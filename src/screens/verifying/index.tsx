@@ -17,7 +17,9 @@ const Verifying = ({navigation}: NativeStackScreenProps<any>) => {
       translucent>
       <View style={styles.container}>
         {/* Back Button */}
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation?.goBack()}>
           <Image source={Icons.arrowLeft} style={styles.backIcon} />
         </TouchableOpacity>
         <View>

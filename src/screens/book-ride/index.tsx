@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useCallback, useRef, useEffect, useState, Suspense} from 'react';
 import {
@@ -13,7 +14,6 @@ import styles from './styles';
 import AppColors from '~utils/app-colors';
 import {Icons} from '~assets/images';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BlurView} from '@react-native-community/blur';
 
 // Lazy-loaded components
@@ -30,7 +30,7 @@ const SecretWord = React.lazy(() => import('~components/secret-word'));
 const SelectJoinee = React.lazy(() => import('~components/select-joinee'));
 const SelectYouth = React.lazy(() => import('~components/select-youth'));
 const SplitFare = React.lazy(() => import('~components/split-fare'));
-const VerifyCard = React.lazy(() => import('~components/visa-card'));
+const VerifyCard = React.lazy(() => import('~components/verification-card'));
 const VisaCard = React.lazy(() => import('~components/visa-card'));
 
 const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
@@ -49,6 +49,8 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
     isAddCardOpen: useState(false),
     verifyCardOpen: useState(false),
     promoCardOpen: useState(false),
+    selectYouthOpen: useState(false),
+    selectJoinee: useState(false),
   };
 
   const toggleModal = (
@@ -74,7 +76,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
     verifyCardModalRef: useRef<BottomSheetModal>(null),
     PromoCodeModalRef: useRef<BottomSheetModal>(null),
   };
-
+  const [selectYouth, setSelectYouth] = useState(false);
   const handleSheetChanges = useCallback((index: number) => {
     setSheetIndex(index);
   }, []);
@@ -93,7 +95,40 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   }, [modalRefs?.bottomSheetModalRef, navigation, route.params]);
 
   useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      const {showVisaCard} = route.params || {};
+      if (showVisaCard) {
+        setTimeout(() => {
+          modalRefs.selectJoineeModalRef.current?.close();
+          modalRefs.splitFareModalRef.current?.close();
+          modalRefs?.chooseRideModalRef.current?.present();
+          modalRefs?.visaModalRef.current?.present();
+        }, 200);
+      }
+    });
+
+    return unsubscribe;
+  }, [modalRefs?.visaModalRef, navigation, route.params]);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      const {showChangeCard} = route.params || {};
+      if (showChangeCard) {
+        setTimeout(() => {
+          modalRefs.selectJoineeModalRef.current?.close();
+          modalRefs.splitFareModalRef.current?.close();
+          modalRefs?.chooseRideModalRef.current?.present();
+          modalRefs.changeCardModalRef.current?.present();
+        }, 200);
+      }
+    });
+
+    return unsubscribe;
+  }, [modalRefs?.changeCardModalRef, navigation, route.params]);
+
+  useEffect(() => {
     if (selection) {
+      setSelectYouth(true);
       modalRefs.selectYouthModalRef.current?.present();
     }
   }, [modalRefs.selectYouthModalRef, selection]);
@@ -111,61 +146,60 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
             showNotificationIcon={false}
             showHistoryIcon
             titleStyle={styles.headerTitle}
-            onBackPress={() => navigation.navigate(ScreenNames.BOTTOM_TABS)}
+            onBackPress={() => {
+              if (sheetIndex !== -1 || selectYouth) {
+                navigation.goBack();
+              }
+            }}
           />
           <TouchableOpacity activeOpacity={1}>
             <ImageBackground source={Icons.map} style={styles.map}>
-              <GestureHandlerRootView>
-                <BottomSheetModalProvider>
-                  {sheetIndex !== -1 && selectedTitle !== 'Pickup' && (
-                    <TouchableOpacity
-                      style={styles.rowRepeatButton}
-                      onPress={() => {
-                        modalRefs?.bottomSheetModalRef?.current?.close();
-                        modalRefs?.repeatTripsModalRef?.current?.present();
-                      }}>
-                      <Image
-                        source={Icons.changes}
-                        style={styles.changesIcon}
-                      />
-                      <Text style={styles.repeatTripsTxt}>Repeat Trips</Text>
-                    </TouchableOpacity>
-                  )}
-                  <BookRideModal
-                    bottomSheetModalRef={modalRefs?.bottomSheetModalRef}
-                    handleSheetChanges={handleSheetChanges}
-                    sheetIndex={sheetIndex}
-                    title={selectedTitle}
-                    onPressConfirm={() => {
-                      setSelectedTitle(
-                        selectedTitle === 'Destination'
-                          ? 'Pickup'
-                          : 'Destination',
-                      );
-                      if (selectedTitle !== 'Destination') {
-                        modalRefs?.bottomSheetModalRef.current?.close();
-                        navigation.navigate(ScreenNames.PASSENGER_DETAIL);
-                      }
-                    }}
-                  />
-                  <DayPickerBottomSheet
-                    repeatTripsModalRef={modalRefs.repeatTripsModalRef}
-                    onPressConfirm={() =>
-                      modalRefs.repeatTripsModalRef.current?.close()
+              <BottomSheetModalProvider>
+                {sheetIndex !== -1 && selectedTitle !== 'Pickup' && (
+                  <TouchableOpacity
+                    style={styles.rowRepeatButton}
+                    onPress={() => {
+                      modalRefs?.bottomSheetModalRef?.current?.close();
+                      modalRefs?.repeatTripsModalRef?.current?.present();
+                    }}>
+                    <Image source={Icons.changes} style={styles.changesIcon} />
+                    <Text style={styles.repeatTripsTxt}>Repeat Trips</Text>
+                  </TouchableOpacity>
+                )}
+                <BookRideModal
+                  bottomSheetModalRef={modalRefs?.bottomSheetModalRef}
+                  handleSheetChanges={handleSheetChanges}
+                  sheetIndex={sheetIndex}
+                  title={selectedTitle}
+                  onPressConfirm={() => {
+                    setSelectedTitle(
+                      selectedTitle === 'Destination'
+                        ? 'Pickup'
+                        : 'Destination',
+                    );
+                    if (selectedTitle !== 'Destination') {
+                      modalRefs?.bottomSheetModalRef.current?.close();
+                      navigation.navigate(ScreenNames.PASSENGER_DETAIL);
                     }
-                  />
-                  <SelectYouth
-                    onPressAddUsers={() =>
-                      navigation.navigate(ScreenNames.PASSENGER_DETAIL)
-                    }
-                    bottomSheetModalRef={modalRefs.selectYouthModalRef}
-                    onPressConfirm={() => {
-                      modalRefs.selectYouthModalRef.current?.close();
-                      modalRefs.secretWordModalRef.current?.present();
-                    }}
-                  />
-                </BottomSheetModalProvider>
-              </GestureHandlerRootView>
+                  }}
+                />
+                <DayPickerBottomSheet
+                  repeatTripsModalRef={modalRefs.repeatTripsModalRef}
+                  onPressConfirm={() =>
+                    modalRefs.repeatTripsModalRef.current?.close()
+                  }
+                />
+                <SelectYouth
+                  onPressAddUsers={() =>
+                    navigation.navigate(ScreenNames.PASSENGER_DETAIL)
+                  }
+                  bottomSheetModalRef={modalRefs.selectYouthModalRef}
+                  onPressConfirm={() => {
+                    setSelectYouth(false);
+                    modalRefs.secretWordModalRef.current?.present();
+                  }}
+                />
+              </BottomSheetModalProvider>
               <BottomSheetModalProvider>
                 {Object.values(modalStates).some(([state]) => state) && (
                   <BlurView
@@ -181,15 +215,20 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     toggleModal(modalStates.isModalOpen[1], index)
                   }
                   onPressConfirm={() => {
+                    modalRefs.selectYouthModalRef.current?.close();
                     modalRefs.secretWordModalRef.current?.close();
                     modalRefs.selectJoineeModalRef.current?.present();
                   }}
                   onPressNo={() => {
+                    modalRefs.selectYouthModalRef.current?.close();
                     modalRefs.secretWordModalRef.current?.close();
                     modalRefs.chooseRideModalRef.current?.present();
                   }}
                 />
                 <SelectJoinee
+                  handleModalChange={index =>
+                    toggleModal(modalStates.selectJoinee[1], index)
+                  }
                   bottomSheetModalRef={modalRefs.selectJoineeModalRef}
                   onPressConfirm={() => {
                     modalRefs.selectJoineeModalRef.current?.close();
@@ -212,7 +251,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     toggleModal(modalStates.isChooseRideModalOpen[1], index)
                   }
                   onPressConfirm={() => {
-                    modalRefs.chooseRideModalRef.current?.close();
+                    modalStates.isChooseRideModalOpen[1](false);
                     modalRefs.visaModalRef.current?.present();
                   }}
                   onPressBack={() => {
@@ -220,23 +259,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     modalRefs?.secretWordModalRef?.current?.present();
                   }}
                 />
-                <VisaCard
-                  modalRef={modalRefs.visaModalRef}
-                  handleModalChange={index =>
-                    toggleModal(modalStates.isVisaModalOpen[1], index)
-                  }
-                  onPressConfirm={() => {
-                    modalRefs.visaModalRef.current?.close();
-                    navigation.navigate(ScreenNames.PROGRESS);
-                  }}
-                  onPressPromo={() =>
-                    modalRefs.PromoCodeModalRef.current?.present()
-                  }
-                  onPressChange={() => {
-                    modalRefs.visaModalRef.current?.close();
-                    modalRefs.changeCardModalRef.current?.present();
-                  }}
-                />
+
                 <PromoCard
                   modalRef={modalRefs.PromoCodeModalRef}
                   handleModalChange={index =>
@@ -247,27 +270,68 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     modalRefs?.visaModalRef?.current?.present();
                   }}
                 />
+              </BottomSheetModalProvider>
+              <BottomSheetModalProvider>
+                {(modalStates?.isVisaModalOpen[0] ||
+                  modalStates?.isChangeCardOpen[0]) && (
+                  <BlurView
+                    blurType="light"
+                    blurAmount={8}
+                    style={styles.blurView}
+                  />
+                )}
+                <VisaCard
+                  modalRef={modalRefs.visaModalRef}
+                  handleModalChange={index =>
+                    toggleModal(modalStates.isVisaModalOpen[1], index)
+                  }
+                  onPressConfirm={() => {
+                    modalRefs.visaModalRef.current?.close();
+                    modalRefs.chooseRideModalRef.current?.close();
+                    navigation.navigate(ScreenNames.PROGRESS);
+                  }}
+                  onPressPromo={() => {
+                    modalRefs?.visaModalRef?.current?.close();
+                    modalRefs.PromoCodeModalRef.current?.present();
+                  }}
+                  onPressChange={() => {
+                    modalRefs.visaModalRef.current?.close();
+                    modalRefs.changeCardModalRef.current?.present();
+                  }}
+                />
                 <ChangeCard
                   modalRef={modalRefs.changeCardModalRef}
                   handleModalChange={index =>
                     toggleModal(modalStates.isChangeCardOpen[1], index)
                   }
                   onPressAddCard={() => {
+                    console.log('hi');
+                    modalRefs?.visaModalRef?.current?.close();
+                    modalRefs.chooseRideModalRef.current?.close();
                     modalRefs.changeCardModalRef.current?.close();
                     modalRefs.addCardModalRef.current?.present();
                   }}
                   onPressConfirm={() => {}}
                 />
+
                 <AddCard
                   modalRef={modalRefs.addCardModalRef}
                   handleModalChange={index =>
                     toggleModal(modalStates.isAddCardOpen[1], index)
                   }
                   onPressConfirm={() => {
-                    modalRefs.addCardModalRef.current?.close();
                     modalRefs.verifyCardModalRef.current?.present();
                   }}
                 />
+              </BottomSheetModalProvider>
+              <BottomSheetModalProvider>
+                {modalStates?.verifyCardOpen[0] && (
+                  <BlurView
+                    blurType="light"
+                    blurAmount={8}
+                    style={styles.blurView}
+                  />
+                )}
                 <VerifyCard
                   modalRef={modalRefs.verifyCardModalRef}
                   handleModalChange={index =>
@@ -275,10 +339,8 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                   }
                   onPressConfirm={() => {
                     modalRefs.verifyCardModalRef.current?.close();
-                    navigation.replace(ScreenNames.VERIFYING);
+                    navigation.navigate(ScreenNames.VERIFYING);
                   }}
-                  onPressChange={() => {}}
-                  onPressPromo={() => {}}
                 />
               </BottomSheetModalProvider>
             </ImageBackground>

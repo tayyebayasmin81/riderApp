@@ -21,11 +21,13 @@ import {width} from '~utils';
 type Props = {
   bottomSheetModalRef?: React.RefObject<BottomSheetModalMethods>;
   onPressConfirm: () => void;
+  handleModalChange?: (index: number) => void;
 };
 
 const SelectJoinee: React.FC<Props> = ({
   bottomSheetModalRef,
   onPressConfirm,
+  handleModalChange,
 }) => {
   const screenHeight = Dimensions.get('screen').height;
   const [listData, setListData] = useState(contactdata2);
@@ -89,6 +91,7 @@ const SelectJoinee: React.FC<Props> = ({
       <BottomSheetModal
         enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
+        onChange={handleModalChange}
         handleIndicatorStyle={styles.handleIndicator}
         ref={bottomSheetModalRef}>
         <BottomSheetView>
