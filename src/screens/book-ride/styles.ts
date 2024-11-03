@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     padding: width(3),
     backgroundColor: AppColors.white,
     flexDirection: 'row',
-    bottom: '52%',
+    top: '2%',
     left: '3%',
     position: 'absolute',
   },

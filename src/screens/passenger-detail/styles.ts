@@ -6,8 +6,9 @@ import {FontFamily} from '~utils/font-family';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    justifyContent: 'space-between',
     backgroundColor: AppColors.white,
-    alignItems: 'center',
   },
   container2: {
     padding: width(5),
@@ -17,14 +18,15 @@ const styles = StyleSheet.create({
     marginLeft: -23,
   },
   profileContainer: {
-    width: 120,
-    height: 120,
+    width: width(28),
+    height: width(28),
     borderRadius: 60,
     padding: 4, // Adjust padding for the border width
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
   },
+
   PlusContainer: {
     position: 'absolute',
     width: 30,
@@ -44,8 +46,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   profileImage: {
-    width: 110,
-    height: 110,
+    width: width(25),
+    height: width(25),
     borderRadius: 55,
   },
   profileIcon: {
@@ -73,17 +75,22 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginVertical: 15,
     paddingHorizontal: 20,
-    fontSize: 9.5,
+    fontSize: width(2.2),
   },
   blurView: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
+  date: {
+    fontSize: width(3.2),
+    color: AppColors.black,
+    fontFamily: FontFamily.appFontRegular,
+  },
   label: {
     fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.black,
     marginVertical: 5,
-    fontSize: 14,
+    fontSize: width(3.5),
   },
   UzrucTxt: {
     textAlign: 'center',
@@ -170,19 +177,6 @@ const styles = StyleSheet.create({
     borderWidth: width(0.4),
     borderRadius: width(100),
   },
-  addConfirm: {
-    marginTop: width(50),
-  },
-  addButton: {
-    backgroundColor: '#007BFF',
-    borderRadius: 8,
-    paddingVertical: 12,
-    paddingHorizontal: 40,
-  },
-  addButtonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+  addConfirm: {marginBottom: width(5)},
 });
 export default styles;

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {width} from '~utils';
+import {height, width} from '~utils';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
 
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontRegular,
   },
   title: {
-    fontSize: 20,
+    fontSize: width(4.8),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
@@ -37,28 +37,31 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: width(2),
   },
   contactIcon: {
-    width: width(13),
+    width: width(11),
     borderRadius: width(100),
-    height: width(13),
+    height: width(11),
     marginRight: width(2),
+  },
+  itemMainContainer: {
+    height: height(40),
   },
   addTxt: {
     color: AppColors.primary,
     alignSelf: 'center',
     fontFamily: FontFamily.appFontMedium,
-    marginTop: width(8),
+    marginTop: width(3),
   },
   nameText: {
     color: AppColors.black,
     flex: 1,
-    fontSize: 15,
+    fontSize: width(3.7),
     fontFamily: FontFamily.appFontMedium,
   },
   button: {
-    paddingVertical: 8,
+    paddingVertical: width(2),
     width: width(23),
     alignItems: 'center',
     justifyContent: 'center',
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
   confirmButton: {
     width: width(92),
     marginTop: width(18),
-    marginBottom: width(3),
+    marginBottom: width(12),
     zIndex: 100,
   },
   bottomIcon: {

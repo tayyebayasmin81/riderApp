@@ -6,6 +6,7 @@ import {FontFamily} from '~utils/font-family';
 const styles = StyleSheet.create({
   modalContainer: {
     paddingVertical: 5,
+    paddingBottom: width(15),
   },
 
   bottomSheetModal: {

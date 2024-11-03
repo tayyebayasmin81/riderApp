@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
@@ -24,6 +24,7 @@ const SplitFare: React.FC<Props> = ({
   const [fare, setFare] = useState<'Half' | '25%' | 'Custom'>('Half');
   const [value, setValue] = useState([50]);
   const stops = [10, 25, 50, 75, 100];
+  const screenHeight = Dimensions.get('screen').height;
 
   const onValuesChangeFinish = (values: number[]) => {
     const nearestStop = stops.reduce((prev, curr) =>
@@ -121,7 +122,10 @@ const SplitFare: React.FC<Props> = ({
             </Text>
           </View>
           <Button
-            containerStyle={styles.confirmButton}
+            containerStyle={[
+              styles.confirmButton,
+              {marginBottom: screenHeight > 850 ? width(5) : width(15)},
+            ]}
             onPress={onPressConfirm}
             title="Confirm Split"
           />

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {width} from '~utils';
+import {height, width} from '~utils';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
 
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontRegular,
   },
   title: {
-    fontSize: 20,
+    fontSize: width(4.5),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
@@ -35,20 +35,20 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontSemiBold,
   },
   subtitle1: {
-    fontSize: 15,
+    fontSize: width(3.2),
     color: AppColors.gray90,
     fontFamily: FontFamily.appFontSemiBold,
   },
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: width(1.5),
   },
   textContainer: {width: width(48)},
   contactIcon: {
-    width: width(13),
+    width: width(11),
     borderRadius: width(100),
-    height: width(13),
+    height: width(11),
     marginRight: width(2),
   },
   row: {
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontMedium,
   },
   button: {
-    paddingVertical: 8,
+    paddingVertical: width(1.3),
     width: width(28),
     alignItems: 'center',
     justifyContent: 'center',
@@ -87,6 +87,9 @@ const styles = StyleSheet.create({
   selectedButton: {
     backgroundColor: AppColors.primary, // Blue color for selected button
   },
+  contactContainer: {
+    height: height(45),
+  },
   selectButtonText: {
     color: AppColors.primary,
   },
@@ -98,9 +101,7 @@ const styles = StyleSheet.create({
   },
   confirmButton: {
     width: width(92),
-    marginTop: width(28),
     marginBottom: width(3),
-    zIndex: 100,
   },
   bottomIcon: {
     width: width(4),

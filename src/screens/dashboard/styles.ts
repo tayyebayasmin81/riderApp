@@ -6,7 +6,6 @@ import {FontFamily} from '~utils/font-family';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
   },
   rideInfo: {
     flexDirection: 'row',
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 0.5,
-    marginBottom: height(13),
+    marginBottom: height(17),
   },
   rideInfoItem: {
     width: width(43),
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: width(100),
-    height: height(90),
+    height: '100%',
     justifyContent: 'flex-end',
   },
 });

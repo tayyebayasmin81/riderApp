@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {Image, Text, TextInput, View} from 'react-native';
+import {Dimensions, Image, Text, TextInput, View} from 'react-native';
 import AppColors from '~utils/app-colors';
 import styles from './styles';
 import {Button} from '~components';
@@ -13,14 +13,18 @@ type Props = {
   onPressConfirm: () => void;
   modalRef?: React.RefObject<BottomSheetModalMethods>;
   handleModalChange: (index: number) => void;
+  onPressNo: () => void;
 };
 
 const SecretWord: React.FC<Props> = ({
   modalRef,
   onPressConfirm,
   handleModalChange,
+  onPressNo,
 }) => {
   const [needCarpool, setNeedCarpool] = useState(false);
+  const screenHeight = Dimensions.get('screen').height;
+
   return (
     <>
       <BottomSheetModal
@@ -59,7 +63,10 @@ const SecretWord: React.FC<Props> = ({
                   />
                 </View>
                 <Button
-                  containerStyle={styles.confirmButton}
+                  containerStyle={[
+                    styles.confirmButton,
+                    {marginBottom: screenHeight > 850 ? width(5) : width(12)},
+                  ]}
                   onPress={() => setNeedCarpool(true)}
                   title="Continue"
                 />
@@ -79,8 +86,11 @@ const SecretWord: React.FC<Props> = ({
                   title="Yes, I do"
                 />
                 <Button
-                  containerStyle={styles.withoutBtn}
-                  onPress={() => onPressConfirm()}
+                  containerStyle={[
+                    styles.withoutBtn,
+                    {marginBottom: screenHeight > 850 ? width(5) : width(12)},
+                  ]}
+                  onPress={() => onPressNo()}
                   title="No, continue without"
                 />
               </>

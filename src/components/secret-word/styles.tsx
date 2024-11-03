@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
   title: {
     marginRight: width(1),
-    fontSize: 20,
+    fontSize: width(5),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },

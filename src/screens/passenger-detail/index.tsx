@@ -20,6 +20,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {BlurView} from '@react-native-community/blur';
 
+const sixYearsAgo = new Date();
+sixYearsAgo.setFullYear(sixYearsAgo.getFullYear() - 6);
+
 const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
   const modalRef = useRef<BottomSheetModal>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +31,7 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
     setIsModalOpen(index >= 0);
   };
   const [name, setName] = useState('');
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | null>(null);
   const [gender, setGender] = useState('Boy');
   const [isDatePickerOpen, setDatePickerOpen] = useState(false);
   const [profileImage, setProfileImage] = useState<any>(null);
@@ -53,18 +56,20 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
   };
 
   return (
-    <View style={styles.container}>
-      <ScreenWrapper
-        statusBarColor={AppColors.primary}
-        scrollType="keyboard"
-        translucent>
-        <Header
-          title={'Add Details'}
-          showBackButton
-          showNotificationIcon={false}
-          titleStyle={styles.headerTitle}
-          onBackPress={() => navigation.navigate(ScreenNames.BOTTOM_TABS)}
-        />
+    <ScreenWrapper
+      statusBarColor={AppColors.primary}
+      scrollType="none"
+      translucent>
+      <Header
+        title={'Add Details'}
+        showBackButton
+        showNotificationIcon={false}
+        titleStyle={styles.headerTitle}
+        onBackPress={() =>
+          navigation.navigate(ScreenNames.BOOK_RIDE, {isDashboard: true})
+        }
+      />
+      <View style={styles.container}>
         <View style={styles.container2}>
           <LinearGradient
             colors={[AppColors.primary, AppColors.primary, '#192f6a']}
@@ -105,8 +110,8 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
           <TouchableOpacity
             onPress={() => setDatePickerOpen(true)}
             style={styles.dateInput}>
-            <Text style={{color: date ? '#000' : '#ccc'}}>
-              {date ? date.toDateString() : 'Date of Birth'}
+            <Text style={styles.date}>
+              {date !== null ? date?.toDateString() : ''}
             </Text>
             <Image source={Icons.calender} style={styles.calendarIcon} />
           </TouchableOpacity>
@@ -134,14 +139,12 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
               <Text style={styles.genderText}>Girl</Text>
             </TouchableOpacity>
           </View>
-
-          <Button
-            containerStyle={styles.addConfirm}
-            onPress={() => modalRef?.current?.present()}
-            title="Add"
-          />
         </View>
-
+        <Button
+          onPress={() => modalRef?.current?.present()}
+          title="Add"
+          containerStyle={styles.addConfirm}
+        />
         <BottomSheetModalProvider>
           {isModalOpen && (
             <BlurView blurType="light" blurAmount={8} style={styles.blurView} />
@@ -162,16 +165,18 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
           modal
           theme="light"
           open={isDatePickerOpen}
-          date={date}
-          onConfirm={date => {
+          date={date ?? new Date()}
+          onConfirm={(date: Date) => {
             setDatePickerOpen(false);
             setDate(date);
           }}
+          maximumDate={sixYearsAgo}
+          buttonColor="black"
           onCancel={() => setDatePickerOpen(false)}
           mode="date"
         />
-      </ScreenWrapper>
-    </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 

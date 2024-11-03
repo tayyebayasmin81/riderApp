@@ -15,5 +15,6 @@ enum ScreenNames {
   VERIFYING = 'Verifying',
   VERIFYING_ERROR = 'VerifyingError',
   VERIFYING_DONE = 'VerifyingDone',
+  BottomTabs = 'BottomTabs',
 }
 export default ScreenNames;

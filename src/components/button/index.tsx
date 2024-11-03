@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, TouchableOpacity, ViewStyle} from 'react-native';
+import {ActivityIndicator, TouchableOpacity} from 'react-native';
 import {CustomText} from '~components';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
@@ -9,7 +9,7 @@ type IButtonCommonProps = {
   title?: string;
   onPress: () => void;
   disabled?: boolean;
-  containerStyle?: ViewStyle;
+  containerStyle?: any;
 };
 
 type IButtonProps = IButtonCommonProps & {

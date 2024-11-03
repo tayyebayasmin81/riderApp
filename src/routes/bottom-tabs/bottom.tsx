@@ -82,8 +82,8 @@ export default function BottomTab() {
         />
       }
       <Tab.Screen
-        name={ScreenNames.RIDE_SUMMARY}
-        component={RideSummary}
+        name={ScreenNames.RIDES}
+        component={Rides}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({focused}) => (

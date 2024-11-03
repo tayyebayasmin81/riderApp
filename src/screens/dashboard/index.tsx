@@ -35,7 +35,9 @@ const Dashboard = ({navigation}: NativeStackScreenProps<any>) => {
 
             {/* Book Ride Button */}
             <Button
-              onPress={() => navigation.navigate(ScreenNames.BOOK_RIDE)}
+              onPress={() =>
+                navigation.navigate(ScreenNames.BOOK_RIDE, {isDashboard: true})
+              }
               title="Book Ride"
             />
           </View>

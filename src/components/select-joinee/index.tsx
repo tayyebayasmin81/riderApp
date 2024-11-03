@@ -1,6 +1,7 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
 import {
+  Dimensions,
   ScrollView,
   Text,
   TextInput,
@@ -14,6 +15,7 @@ import {Icons} from '~assets/images';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {contactdata2} from '~utils/dummy-data';
+import {width} from '~utils';
 
 // Component Props
 type Props = {
@@ -25,6 +27,7 @@ const SelectJoinee: React.FC<Props> = ({
   bottomSheetModalRef,
   onPressConfirm,
 }) => {
+  const screenHeight = Dimensions.get('screen').height;
   const [listData, setListData] = useState(contactdata2);
 
   const toggleSelect = (id: string) => {
@@ -87,9 +90,7 @@ const SelectJoinee: React.FC<Props> = ({
         enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
-        ref={bottomSheetModalRef}
-        snapPoints={['96%']} // Adjusting snap points
-      >
+        ref={bottomSheetModalRef}>
         <BottomSheetView>
           {/* Modal Content */}
           <View style={styles.modalContainer}>
@@ -112,13 +113,18 @@ const SelectJoinee: React.FC<Props> = ({
             </View>
             <Text style={styles.subtitle1}>12 contacts</Text>
 
-            <ScrollView showsHorizontalScrollIndicator={false}>
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              style={styles.contactContainer}>
               {listData.map(item => (
                 <View key={item.id}>{renderItem({item})}</View>
               ))}
             </ScrollView>
             <Button
-              containerStyle={styles.confirmButton}
+              containerStyle={[
+                styles.confirmButton,
+                {marginBottom: screenHeight > 850 ? width(5) : width(12)},
+              ]}
               onPress={onPressConfirm}
               title="Continue"
             />

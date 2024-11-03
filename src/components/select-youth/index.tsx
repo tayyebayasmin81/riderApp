@@ -19,11 +19,13 @@ import {contactdata} from '~utils/dummy-data';
 type Props = {
   bottomSheetModalRef?: React.RefObject<BottomSheetModalMethods>;
   onPressConfirm: () => void;
+  onPressAddUsers: () => void;
 };
 
 const SelectYouth: React.FC<Props> = ({
   bottomSheetModalRef,
   onPressConfirm,
+  onPressAddUsers,
 }) => {
   const [listData, setListData] = useState(contactdata);
 
@@ -61,9 +63,7 @@ const SelectYouth: React.FC<Props> = ({
         enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
-        ref={bottomSheetModalRef}
-        snapPoints={['96%']} // Adjusting snap points
-      >
+        ref={bottomSheetModalRef}>
         <BottomSheetView>
           {/* Modal Content */}
           <View style={styles.modalContainer}>
@@ -81,12 +81,16 @@ const SelectYouth: React.FC<Props> = ({
                 placeholder="Search"
               />
             </View>
-            <ScrollView showsHorizontalScrollIndicator={false}>
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              style={styles.itemMainContainer}>
               {listData.map(item => (
                 <View key={item.id}>{renderItem({item})}</View>
               ))}
             </ScrollView>
-            <Text style={styles.addTxt}>+ Add new Uzros </Text>
+            <TouchableOpacity onPress={onPressAddUsers}>
+              <Text style={styles.addTxt}>+ Add new Uzros </Text>
+            </TouchableOpacity>
             <Button
               containerStyle={styles.confirmButton}
               onPress={onPressConfirm}

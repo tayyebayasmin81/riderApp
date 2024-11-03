@@ -12,12 +12,14 @@ type Props = {
   bottomSheetModalRef?: React.RefObject<BottomSheetModalMethods>;
   onPressConfirm: () => void;
   handleModalChange?: (index: number) => void;
+  onPressBack: () => void;
 };
 
 const ChooseRide: React.FC<Props> = ({
   bottomSheetModalRef,
   onPressConfirm,
   handleModalChange,
+  onPressBack,
 }) => {
   // eslint-disable-next-line react/no-unstable-nested-components
   const RideOptionItem = ({
@@ -25,14 +27,20 @@ const ChooseRide: React.FC<Props> = ({
     seats,
     description,
     color,
+    index,
   }: {
     title: string;
     seats: number;
     description?: string;
     color: string;
+    index: number;
   }) => (
     <TouchableOpacity
-      style={styles.itemContainer}
+      style={[
+        styles.itemContainer,
+        // eslint-disable-next-line react-native/no-inline-styles
+        {borderBottomWidth: index === rideOptions?.length - 1 ? 0 : 1},
+      ]}
       onPress={() => onPressConfirm()}>
       <View style={styles.carContainer}>
         <Image source={Icons.car} style={styles.image} />
@@ -59,22 +67,25 @@ const ChooseRide: React.FC<Props> = ({
           {/* Modal Content */}
           <View style={styles.modalContainer}>
             <View style={styles.row}>
-              <Image
-                source={Icons.below}
-                style={styles.belowIcon}
-                resizeMode="contain"
-                tintColor="#C0BCBC"
-              />
+              <TouchableOpacity onPress={() => onPressBack()}>
+                <Image
+                  source={Icons.below}
+                  style={styles.belowIcon}
+                  resizeMode="contain"
+                  tintColor="#C0BCBC"
+                />
+              </TouchableOpacity>
               <Text style={styles.title}>Choose your ride</Text>
             </View>
             <ScrollView>
-              {rideOptions.map(item => (
+              {rideOptions.map((item, index) => (
                 <RideOptionItem
                   key={item.id}
                   title={item.title}
                   seats={item.seats}
                   description={item.description}
                   color={item.color}
+                  index={index}
                 />
               ))}
             </ScrollView>

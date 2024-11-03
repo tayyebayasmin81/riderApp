@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     color: AppColors.black,
-    fontSize: 13,
+    fontSize: width(3),
     fontFamily: FontFamily.appFontBold,
   },
 
@@ -54,10 +54,11 @@ const styles = StyleSheet.create({
   },
   locationList: {
     marginTop: 13,
-    marginBottom: width(17),
+    marginBottom: width(30),
   },
   locationItem: {
     width: width(93),
+    paddingHorizontal: width(2),
     flexDirection: 'row',
     marginBottom: 15,
   },
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FontFamily.appFontBold,
     color: AppColors.black,
-    width: width(82),
+    width: width(73),
     lineHeight: 16,
     fontWeight: '700',
   },
@@ -115,7 +116,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   heartIcon: {
-    marginLeft: -5,
     width: width(5),
     height: width(5),
     resizeMode: 'contain',
@@ -124,6 +124,11 @@ const styles = StyleSheet.create({
     height: width(10),
     color: AppColors.black,
     width: width(75),
+  },
+  heart: {
+    width: width(10),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default styles;

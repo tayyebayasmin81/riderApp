@@ -1,6 +1,6 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
@@ -9,22 +9,23 @@ import {Button} from '~components';
 
 // Component Props
 type Props = {
-  onPressConfirm: () => void;
+  onPressClose: () => void;
   modalRef?: React.RefObject<BottomSheetModalMethods>;
   handleModalChange: (index: number) => void;
 };
 
 const PromoCard: React.FC<Props> = ({
   modalRef,
-  onPressConfirm,
+  onPressClose,
   handleModalChange,
 }) => {
   const [promoCode, setPromoCode] = useState('');
   const [error, setError] = useState(false);
   const handleActivateCode = () => {
-    if (promoCode !== 'YOUR_VALID_CODE') {
+    if (promoCode === '') {
       setError(true);
     } else {
+      onPressClose();
       setError(false);
       // Proceed with the promo code application logic
     }
@@ -42,7 +43,9 @@ const PromoCard: React.FC<Props> = ({
           <View style={styles.modalContainer}>
             <View style={styles.row}>
               <Text style={styles.header}>Add promo</Text>
-              <Image source={Icons.cross2} style={styles.crossIcon} />
+              <TouchableOpacity onPress={onPressClose}>
+                <Image source={Icons.cross2} style={styles.crossIcon} />
+              </TouchableOpacity>
             </View>
             <View
               style={[

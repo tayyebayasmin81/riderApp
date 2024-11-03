@@ -1,6 +1,7 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
 import {
+  Dimensions,
   ScrollView,
   Text,
   TextInput,
@@ -38,6 +39,7 @@ const BookRideModal: React.FC<Props> = ({
   );
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+  const screenHeight = Dimensions.get('screen').height;
 
   const handleHeartPress = (index: number) => {
     // Check if the index is already selected
@@ -99,7 +101,7 @@ const BookRideModal: React.FC<Props> = ({
         ref={bottomSheetModalRef}
         onChange={handleSheetChanges}
         enablePanDownToClose={false}
-        snapPoints={['60%', '75%', '96%']} // Adjusting snap points
+        snapPoints={['60%', '75%', '90%']} // Adjusting snap points
       >
         <BottomSheetView>
           {/* Modal Content */}
@@ -166,8 +168,11 @@ const BookRideModal: React.FC<Props> = ({
                       {item.street}
                     </Text>
                   </View>
-                  <TouchableOpacity onPress={() => handleHeartPress(index)}>
+                  <TouchableOpacity
+                    onPress={() => handleHeartPress(index)}
+                    style={styles.heart}>
                     <Image
+                      resizeMode="contain"
                       source={Icons.heart}
                       style={[
                         styles.heartIcon,
@@ -188,11 +193,16 @@ const BookRideModal: React.FC<Props> = ({
       </BottomSheetModal>
       {sheetIndex !== -1 && (
         <Button
-          containerStyle={styles.confirmButton}
+          containerStyle={[
+            styles.confirmButton,
+            // eslint-disable-next-line react-native/no-inline-styles
+            {bottom: screenHeight < 850 ? '7%' : '1%'},
+          ]}
           onPress={onPressConfirm}
           title={`Confirm ${title}`}
         />
       )}
+
       <DatePicker
         modal
         mode="datetime"
@@ -206,6 +216,7 @@ const BookRideModal: React.FC<Props> = ({
           setOpen(false);
         }}
         theme="light"
+        buttonColor="black"
       />
     </>
   );
