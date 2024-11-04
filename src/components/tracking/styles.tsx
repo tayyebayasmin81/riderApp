@@ -173,14 +173,14 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   actionButton: {
-    paddingVertical: 19,
+    paddingVertical: width(4),
     alignItems: 'center',
     borderBottomWidth: 1,
     flexDirection: 'row',
     borderBottomColor: '#E0E0E0',
   },
   actionButtonCancel: {
-    paddingVertical: 19,
+    paddingVertical: width(4),
     alignItems: 'center',
     flexDirection: 'row',
     borderBottomWidth: 1,
@@ -205,6 +205,9 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontMedium,
     color: '#4C4C50',
     marginLeft: width(3),
+  },
+  extra: {
+    marginBottom: width(5),
   },
   icon: {
     marginTop: -5,
@@ -272,6 +275,7 @@ const styles = StyleSheet.create({
   },
   mainRow2: {
     paddingVertical: 6,
+    marginBottom: width(8),
     paddingHorizontal: width(15),
     flexDirection: 'row',
     justifyContent: 'space-between',

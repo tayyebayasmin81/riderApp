@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     marginBottom: width(7),
   },
   txt2: {
+    textAlign: 'center',
     color: AppColors.gray,
     fontSize: 11.5,
     fontStyle: 'italic',
@@ -31,9 +32,9 @@ const styles = StyleSheet.create({
     width: width(16),
     height: width(16),
     position: 'absolute',
-    left: 48,
+    left: '12%',
     right: 0,
-    top: 50,
+    top: '30%',
     bottom: 0,
   },
   loader: {

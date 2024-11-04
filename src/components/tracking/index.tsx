@@ -154,7 +154,7 @@ const RideTrack: React.FC<Props> = ({modalRef, onGotoNext}) => {
                     <Text style={styles.callDriver}>Call the Driver</Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity style={styles.actionButton}>
+                  <TouchableOpacity style={[styles.actionButton, styles.extra]}>
                     <Image source={Icons.microphone} style={styles.icon} />
                     <Text style={styles.needHelp}>Need our help?</Text>
                   </TouchableOpacity>
