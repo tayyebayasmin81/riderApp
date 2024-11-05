@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
   header: {
     color: AppColors.black,
-    fontSize: 24,
+    fontSize: width(5.7),
     fontFamily: FontFamily.appFontBold,
     marginBottom: 20,
   },
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     borderColor: '#8A8A8E',
     borderWidth: 1,
     borderRadius: width(60),
-    paddingHorizontal: 10,
+    paddingHorizontal: width(3),
     marginTop: width(7),
   },
   inputContainerError: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 50,
+    height: height(7),
     fontSize: 16,
     paddingBottom: 10,
     fontFamily: FontFamily.appFontBold,

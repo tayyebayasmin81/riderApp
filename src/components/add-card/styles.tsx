@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {width} from '~utils';
+import {height, width} from '~utils';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
 
@@ -50,49 +50,45 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    fontSize: 12,
+    fontSize: width(3),
     color: AppColors.gray,
     fontFamily: FontFamily.appFontSemiBold,
-    marginBottom: 20,
+    marginBottom: height(0.8),
   },
   headerBold: {
-    fontSize: 12,
+    fontSize: width(3),
     fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.primary,
   },
   label: {
-    fontSize: 13,
+    fontSize: width(3.3),
     color: '#000',
-    marginTop: 10,
-    marginBottom: 5,
+    marginTop: width(1),
+    marginBottom: height(0.5),
     fontFamily: FontFamily.appFontBold,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: AppColors.gray20,
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 5,
-    color: AppColors.black,
   },
   input: {
     flex: 1,
-    padding: 10,
-    fontSize: 16,
+    padding: width(2),
+    fontSize: width(3.6),
     color: AppColors.black,
   },
   input1: {
+    padding: width(2),
     flex: 1,
     backgroundColor: AppColors.gray20,
-    fontSize: 16,
+    fontSize: width(3.6),
     borderRadius: 15,
     color: AppColors.black,
   },
   input2: {
+    padding: width(2),
     color: AppColors.black,
     flex: 1,
-    padding: 15,
     fontSize: 16,
   },
   input3: {
@@ -105,8 +101,8 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
-    fontSize: 12,
-    marginBottom: 10,
+    fontSize: width(3),
+    marginBottom: width(2),
   },
   row: {
     flexDirection: 'row',
@@ -126,12 +122,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: AppColors.gray20,
     borderRadius: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: width(3),
     color: AppColors.black,
   },
   cardIcons: {
     flexDirection: 'row',
-    marginVertical: 20,
+    marginVertical: width(4),
   },
 
   footerText: {

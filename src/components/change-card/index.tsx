@@ -1,9 +1,10 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
+import {width} from '~utils';
 
 // Component Props
 type Props = {
@@ -19,6 +20,7 @@ const ChangeCard: React.FC<Props> = ({
   handleModalChange,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState('card');
+  const screenHeight = Dimensions.get('screen').height;
 
   return (
     <>
@@ -61,7 +63,12 @@ const ChangeCard: React.FC<Props> = ({
             </TouchableOpacity>
 
             {/* Add New Card Option */}
-            <TouchableOpacity style={styles.addCard} onPress={onPressAddCard}>
+            <TouchableOpacity
+              style={[
+                styles.addCard,
+                {marginBottom: screenHeight > 850 ? width(3) : width(7)},
+              ]}
+              onPress={onPressAddCard}>
               <Text style={styles.plus}>+ </Text>
               <Text style={styles.addCardText}>Add new card</Text>
             </TouchableOpacity>

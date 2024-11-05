@@ -39,7 +39,7 @@ const RiderSummary: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
-        snapPoints={['85%']}
+        snapPoints={['93%']}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}
@@ -85,7 +85,10 @@ const RiderSummary: React.FC<Props> = ({
               placeholder="Extra..."
               placeholderTextColor="#A9A9A9"
               value={comment}
-              onChangeText={setComment}
+              onChangeText={txt => {
+                modalRef?.current?.expand();
+                setComment(txt);
+              }}
               multiline
               onFocus={() => modalRef?.current?.expand()}
             />

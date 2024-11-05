@@ -42,7 +42,7 @@ const VisaCard: React.FC<Props> = ({
           setIndex(index);
           handleModalChange(index);
         }}
-        snapPoints={['67%']}
+        snapPoints={['50%']}
         enablePanDownToClose={false}
         ref={modalRef}>
         <BottomSheetView>
@@ -105,7 +105,7 @@ const VisaCard: React.FC<Props> = ({
                 <TouchableOpacity
                   style={[
                     styles.button,
-                    {marginVertical: screenHeight > 850 ? width(4) : width(12)},
+                    {marginBottom: screenHeight > 850 ? width(4) : width(15)},
                   ]}
                   onPress={onPressConfirm}>
                   <ImageBackground source={Icons.btn} style={styles.icon}>

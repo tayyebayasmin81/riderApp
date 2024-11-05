@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
     width: width(12),
   },
   title: {
-    fontSize: 20,
+    fontSize: width(4.5),
     fontFamily: FontFamily.appFontBold,
     color: '#1a1a1a',
     marginBottom: 10,
   },
   message: {
-    fontSize: 14,
+    fontSize: width(3.3),
     color: '#6c6c6c',
     textAlign: 'left',
     marginBottom: 12,

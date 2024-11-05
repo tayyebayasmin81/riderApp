@@ -40,7 +40,7 @@ const RideTrack: React.FC<Props> = ({modalRef, onGotoNext}) => {
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
-        snapPoints={['40%']}
+        snapPoints={['44%']}
         onChange={index => setIndex(index)}>
         <BottomSheetView>
           {/* Modal Content */}

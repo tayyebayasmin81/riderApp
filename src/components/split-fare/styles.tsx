@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontRegular,
   },
   title: {
-    fontSize: 20,
+    fontSize: width(5.4),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },

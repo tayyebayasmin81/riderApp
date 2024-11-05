@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     paddingHorizontal: 16,
     paddingVertical: 5,
+    marginBottom: width(12),
   },
   bottomSheetModal: {
     borderRadius: 35,
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     width: width(12),
   },
   title: {
-    fontSize: 19,
+    fontSize: width(5),
     fontFamily: FontFamily.appFontBold,
     marginBottom: 3,
     color: AppColors.black,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
   detailRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 18,
+    marginBottom: width(3),
   },
   detailText: {
     color: AppColors.black,

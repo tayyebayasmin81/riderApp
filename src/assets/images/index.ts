@@ -24,7 +24,7 @@ export const Icons = {
   tickIcon: require('./tickIcon.png'),
   loader: require('./loaderIcon.gif'),
   loader2: require('./loader2.png'),
-  car1: require('./car1.png'),
+  car1: require('./car1.gif'),
   chat: require('./Chat.png'),
   cross: require('./cross.png'),
   man: require('./man.png'),

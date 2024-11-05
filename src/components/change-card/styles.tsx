@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {width} from '~utils';
+import {height, width} from '~utils';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
 
@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
   },
   title: {
     color: AppColors.gray,
-    fontSize: 16,
+    fontSize: width(4),
     fontFamily: FontFamily.appFontSemiBold,
-    marginBottom: 7,
+    marginBottom: height(1),
   },
   option: {
     flexDirection: 'row',

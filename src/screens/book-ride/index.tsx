@@ -305,10 +305,10 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     toggleModal(modalStates.isChangeCardOpen[1], index)
                   }
                   onPressAddCard={() => {
-                    console.log('hi');
                     modalRefs?.visaModalRef?.current?.close();
                     modalRefs.chooseRideModalRef.current?.close();
                     modalRefs.changeCardModalRef.current?.close();
+                    modalRefs.splitFareModalRef.current?.close();
                     modalRefs.addCardModalRef.current?.present();
                   }}
                   onPressConfirm={() => {}}
@@ -320,6 +320,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     toggleModal(modalStates.isAddCardOpen[1], index)
                   }
                   onPressConfirm={() => {
+                    modalRefs.splitFareModalRef.current?.close();
                     modalRefs.verifyCardModalRef.current?.present();
                   }}
                 />

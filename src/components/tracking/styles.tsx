@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     paddingHorizontal: 16,
     paddingVertical: 5,
+    marginBottom: width(5),
   },
   bottomSheetModal: {
     borderRadius: 35,
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     width: width(12),
   },
   title: {
-    fontSize: 17,
+    fontSize: width(4.5),
     fontFamily: FontFamily.appFontBold,
     marginBottom: 3,
     color: AppColors.black,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   driverName: {
     color: AppColors.black,
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: width(4),
   },
   driverName2: {
     color: AppColors.black,
@@ -78,15 +79,15 @@ const styles = StyleSheet.create({
   driverName3: {
     color: AppColors.gray,
     fontWeight: 'bold',
-    fontSize: 10,
-    marginBottom: 20,
+    fontSize: width(2.3),
+    marginBottom: width(5),
   },
   driverRating: {
-    marginTop: 2,
+    marginTop: width(1.5),
     marginLeft: 8,
     fontFamily: FontFamily.appFontMedium,
     color: 'gray',
-    fontSize: 14,
+    fontSize: width(3),
   },
   carModel: {
     color: 'gray',
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.9,
   },
   label: {
-    fontSize: 14,
+    fontSize: width(3.7),
     color: AppColors.black,
     fontFamily: FontFamily.appFontMedium,
   },
@@ -137,12 +138,12 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.gray20,
   },
   paymentMethod: {
-    fontSize: 16,
+    fontSize: width(3.7),
     fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.gray,
   },
   childDetailsHeader: {
-    fontSize: 18,
+    fontSize: width(4.5),
     fontFamily: FontFamily.appFontSemiBold,
     marginBottom: 10,
     color: AppColors.black,
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
     height: 12,
   },
   childName: {
-    fontSize: 16,
+    fontSize: width(4),
     color: AppColors.black,
     fontFamily: FontFamily.appFontSemiBold,
   },
@@ -207,6 +208,7 @@ const styles = StyleSheet.create({
     marginLeft: width(3),
   },
   extra: {
+    borderBottomWidth: 0,
     marginBottom: width(5),
   },
   icon: {

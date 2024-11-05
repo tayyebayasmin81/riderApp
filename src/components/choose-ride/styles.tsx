@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   belowIcon: {
+    marginTop: -5,
     width: width(9),
     height: width(9),
   },
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   },
   title: {
     paddingHorizontal: 10,
-    fontSize: 20,
+    fontSize: width(4.8),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: width(2),
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 15,
+    paddingVertical: width(3),
     width: width(100),
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title1: {
-    fontSize: 16,
+    fontSize: width(3.5),
     lineHeight: 18,
     fontFamily: FontFamily.appFontBold,
   },
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   },
   description: {
     lineHeight: 13,
-    fontSize: 11,
+    fontSize: width(2.7),
     color: '#8A8A8E',
     marginTop: 5,
     fontFamily: FontFamily.appFontLight,

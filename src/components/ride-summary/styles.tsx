@@ -26,14 +26,14 @@ const styles = StyleSheet.create({
     marginHorizontal: width(2),
   },
   title: {
-    fontSize: 24,
+    fontSize: width(6),
     fontFamily: FontFamily.appFontSemiBold,
     marginBottom: 10,
     color: AppColors.black,
   },
   subtitle: {
     alignSelf: 'center',
-    fontSize: 16,
+    fontSize: width(4),
     textAlign: 'center',
     fontFamily: FontFamily.appFontMedium,
     color: AppColors.black,
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   tagButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 11,
+    paddingVertical: width(2),
+    paddingHorizontal: width(2),
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#E0E0E0',

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   locationContainer: {
     paddingLeft: 30,
-    marginBottom: 16,
+    marginBottom: height(1),
   },
 
   locationRow: {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontFamily: FontFamily.appFontSemiBold,
-    fontSize: 14,
+    fontSize: width(3.5),
     color: AppColors.primary,
   },
   seperator: {
@@ -35,34 +35,34 @@ const styles = StyleSheet.create({
     height: 120,
   },
   addressText: {
-    fontSize: 11,
-    marginBottom: 11,
+    fontSize: width(3.3),
+    marginBottom: height(2),
     fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.gray,
   },
   addressText1: {
-    fontSize: 14,
+    fontSize: width(3.3),
     fontFamily: FontFamily.appFontSemiBold,
     color: AppColors.black,
   },
   header: {
-    fontSize: 20,
+    fontSize: width(5),
     fontFamily: FontFamily.appFontSemiBold,
     textAlign: 'center',
     color: AppColors.black,
     marginTop: width(7),
   },
   subHeader: {
-    fontSize: 16,
+    fontSize: width(4),
     textAlign: 'center',
     marginTop: 5,
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
   thankYou: {
-    fontSize: 16,
+    fontSize: width(4),
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: height(1),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
@@ -72,14 +72,19 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontRegular,
     textAlign: 'center',
     color: AppColors.gray,
-    marginBottom: 20,
+    marginBottom: height(2),
   },
-  tripDetails: {padding: 10, borderBottomWidth: 1, borderColor: 'lightgray'},
+  tripDetails: {
+    paddingHorizontal: width(4),
+    paddingVertical: height(1),
+    borderBottomWidth: 1,
+    borderColor: 'lightgray',
+  },
   sectionTitle: {
-    fontSize: 20,
-    marginHorizontal: 20,
+    fontSize: width(4.5),
+    marginHorizontal: width(1),
+    marginBottom: width(2),
     fontWeight: 'bold',
-    marginBottom: 10,
     color: AppColors.black,
   },
 
@@ -97,7 +102,8 @@ const styles = StyleSheet.create({
   driverInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
+    paddingHorizontal: width(5),
+    paddingVertical: width(2),
     justifyContent: 'space-between',
   },
   driverImage: {width: 40, height: 40, borderRadius: 20, marginRight: 10},
@@ -112,16 +118,17 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.appFontSemiBold,
   },
   fareBreakdown: {
+    marginHorizontal: width(4),
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: 'lightgray',
     paddingVertical: 10,
   },
   fareItem: {
-    marginHorizontal: 20,
+    marginHorizontal: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5,
+    marginVertical: width(1),
   },
   fareText: {color: AppColors.black, fontFamily: FontFamily.appFontMedium},
   FareTxt2: {color: AppColors.black},
@@ -130,6 +137,8 @@ const styles = StyleSheet.create({
   total: {color: AppColors.black, fontFamily: FontFamily.appFontMedium},
   confirmButton: {
     width: width(92),
+    position: 'absolute',
+    bottom: 0,
     marginVertical: width(5),
   },
   doneButton: {

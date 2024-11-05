@@ -1,12 +1,14 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
-import React, {useState} from 'react';
-import {Image, Text, TextInput, View} from 'react-native';
+import React from 'react';
+import {Image, Text, View} from 'react-native';
 import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
-import AppColors from '~utils/app-colors';
-import {Button} from '~components';
-
+import {Button, Input} from '~components';
+import {useForm} from 'react-hook-form';
+import {cardSchema} from '~utils/card-schema';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {width} from '~utils';
 // Component Props
 type Props = {
   modalRef?: React.RefObject<BottomSheetModalMethods>;
@@ -19,41 +21,28 @@ const AddCard: React.FC<Props> = ({
   handleModalChange,
   onPressConfirm,
 }) => {
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
-  const [cardHolderName, setCardHolderName] = useState('');
-
-  const [cardNumberError, setCardNumberError] = useState(false);
-  const [expiryDateError, setExpiryDateError] = useState(false);
-  const [cvvError, setCvvError] = useState(false);
-  const [cardHolderNameError, setCardHolderNameError] = useState(false);
-
   const handleAddCard = () => {
-    // Check if all fields are filled
-    setCardNumberError(cardNumber === '');
-    setExpiryDateError(expiryDate === '');
-    setCvvError(cvv === '');
-    setCardHolderNameError(cardHolderName === '');
-
-    // If any error exists, don't proceed
-    if (!cardNumber || !expiryDate || !cvv || !cardHolderName) {
-      return;
-    }
-
-    // Call onPressConfirm if there are no errors
     onPressConfirm();
   };
 
+  const {control, handleSubmit, setValue} = useForm({
+    mode: 'all',
+
+    resolver: yupResolver(cardSchema),
+  });
+
   const handleExpiryDateChange = (text: string) => {
-    // Auto add slash after entering month
-    if (text.length === 2 && expiryDate.length === 1) {
-      setExpiryDate(text + '/');
-    } else if (text.length <= 5) {
-      // Limit length to MM/YY
-      setExpiryDate(text);
+    let cleaned = text.replace(/\D/g, '');
+    let formatted = cleaned;
+    if (cleaned.length >= 2) {
+      formatted = `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}`;
     }
+    if (formatted.length > 5) {
+      formatted = formatted.slice(0, 5);
+    }
+    setValue('expiryDate', formatted);
   };
+
   return (
     <>
       <BottomSheetModal
@@ -73,75 +62,55 @@ const AddCard: React.FC<Props> = ({
               refunded faster than your kid runs to recess!
             </Text>
 
-            <Text style={styles.label}>Card number</Text>
             <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="Enter card number"
-                placeholderTextColor={AppColors.gray10}
-                keyboardType="numeric"
-                value={cardNumber}
+              <Input
+                control={control}
+                title="Card number"
+                name="cardnumber"
                 onFocus={() => modalRef?.current?.expand()}
-                onChangeText={setCardNumber}
+                placeholder="Enter card number"
+                keyboardType="numeric"
               />
               <Image source={Icons.cardIcon} style={styles.icon} />
             </View>
-            {cardNumberError && (
-              <Text style={styles.errorText}>Please provide a card number</Text>
-            )}
+
             <View style={styles.row}>
               <View style={styles.halfInputContainer}>
-                <Text style={styles.label}>Expiry date</Text>
-                <View style={styles.halfInputContainer1}>
-                  <TextInput
-                    style={styles.input1}
-                    placeholder="MM/YY"
-                    keyboardType="numeric"
-                    value={expiryDate}
-                    onFocus={() => modalRef?.current?.expand()}
-                    placeholderTextColor={AppColors.gray}
-                    onChangeText={handleExpiryDateChange}
-                  />
-                </View>
-                {expiryDateError && (
-                  <Text style={styles.errorText}>
-                    Please provide an expiry date
-                  </Text>
-                )}
+                <Input
+                  control={control}
+                  title="Expiry date"
+                  name="expiryDate"
+                  onFocus={() => modalRef?.current?.expand()}
+                  placeholder="MM/YY"
+                  onChangeTextCustom={handleExpiryDateChange}
+                  keyboardType="numeric"
+                  innerContainerStyle={{width: width(45)}}
+                  containerStyle={{width: width(45)}}
+                />
               </View>
               <View style={styles.halfInputContainer}>
-                <Text style={styles.label}>CVV</Text>
-                <View style={styles.halfInputContainer1}>
-                  <TextInput
-                    style={styles.input1}
-                    keyboardType="numeric"
-                    secureTextEntry
-                    value={cvv}
-                    onChangeText={setCvv}
-                    onFocus={() => modalRef?.current?.expand()}
-                  />
-                </View>
-                {cvvError && (
-                  <Text style={styles.errorText}>Please provide a CVV</Text>
-                )}
+                <Input
+                  control={control}
+                  title="CVV"
+                  name="cvv"
+                  onFocus={() => modalRef?.current?.expand()}
+                  keyboardType="numeric"
+                  innerContainerStyle={{width: width(45)}}
+                  containerStyle={{width: width(45)}}
+                />
               </View>
             </View>
 
-            <Text style={styles.label}>Card holder name</Text>
             <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholderTextColor={AppColors.gray10}
-                value={cardHolderName}
+              <Input
+                control={control}
+                title="Card Holder Name"
+                name="cardHolderName"
                 onFocus={() => modalRef?.current?.expand()}
-                onChangeText={setCardHolderName}
+                keyboardType="default"
               />
             </View>
-            {cardHolderNameError && (
-              <Text style={styles.errorText}>
-                Please provide a card holder name
-              </Text>
-            )}
+
             <View style={styles.cardIcons}>
               <Image source={Icons.card3} style={styles.icon} />
               <Image source={Icons.visa2} style={styles.icon2} />
@@ -150,7 +119,7 @@ const AddCard: React.FC<Props> = ({
 
             <Button
               containerStyle={styles.confirmButton}
-              onPress={handleAddCard}
+              onPress={handleSubmit(handleAddCard)}
               title="Add card"
             />
 

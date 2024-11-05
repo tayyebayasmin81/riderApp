@@ -15,9 +15,19 @@ const styles = StyleSheet.create({
   },
 
   car: {
-    width: width(20),
-    height: height(12),
+    borderRadius: 100,
+    width: width(21),
+    height: width(20),
     resizeMode: 'contain',
+  },
+  carContainer2: {
+    backgroundColor: AppColors.white,
+    width: width(22),
+    height: width(22),
+    overflow: 'hidden',
+    borderColor: AppColors.primary,
+    borderWidth: 3,
+    borderRadius: 100,
   },
   txt1: {
     color: AppColors.primary,

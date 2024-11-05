@@ -32,7 +32,9 @@ const SearchingDrivers = ({navigation}: NativeStackScreenProps<any>) => {
           <TouchableOpacity
             style={styles.carContainer}
             onPress={() => navigation.navigate(ScreenNames.RIDE_TRACKING)}>
-            <Image source={Icons.car1} style={styles.car} />
+            <View style={styles.carContainer2}>
+              <Image source={Icons.car1} style={styles.car} />
+            </View>
             <Text style={styles.txt1}>Finding drivers nearby</Text>
             <Text style={styles.txt2}>This may take a few seconds...</Text>
           </TouchableOpacity>

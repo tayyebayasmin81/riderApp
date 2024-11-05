@@ -1,9 +1,10 @@
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Dimensions, Text, View} from 'react-native';
 import styles from './styles';
 import {Button} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
+import {width} from '~utils';
 
 // Component Props
 type Props = {
@@ -17,6 +18,8 @@ const VerificationCard: React.FC<Props> = ({
   onPressConfirm,
   handleModalChange,
 }) => {
+  const screenHeight = Dimensions.get('screen').height;
+
   return (
     <>
       <BottomSheetModal
@@ -39,7 +42,10 @@ const VerificationCard: React.FC<Props> = ({
             </Text>
 
             <Button
-              containerStyle={styles.confirmButton}
+              containerStyle={[
+                styles.confirmButton,
+                {marginBottom: screenHeight > 850 ? width(2) : width(12)},
+              ]}
               onPress={onPressConfirm}
               title="Continue"
             />
