@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   Alert,
+  Modal,
 } from 'react-native';
 import {ScreenWrapper} from 'react-native-screen-wrapper';
 import {ScreenNames} from '~routes';
@@ -37,6 +38,8 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
   };
   const [name, setName] = useState('');
   const [date, setDate] = useState<Date | null>(null);
+  const [confirmDate, setConfirmDate] = useState<Date | null>(null);
+
   const [gender, setGender] = useState('Boy');
   const [isDatePickerOpen, setDatePickerOpen] = useState(false);
   const [profileImage, setProfileImage] = useState<any>(null);
@@ -61,6 +64,7 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
   };
 
   const validateDate = (selectedDate: Date) => {
+    console.log('ih');
     const age = today.getFullYear() - selectedDate.getFullYear();
     if (age < 5 || age > 18) {
       showMessage({
@@ -70,7 +74,7 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
         duration: 2000,
       });
     } else {
-      setDate(selectedDate);
+      setConfirmDate(selectedDate);
     }
   };
   return (
@@ -133,7 +137,7 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
             onPress={() => setDatePickerOpen(true)}
             style={styles.dateInput}>
             <Text style={styles.date}>
-              {date !== null ? date?.toDateString() : ''}
+              {confirmDate !== null ? confirmDate?.toDateString() : ''}
             </Text>
             <Image source={Icons.calender} style={styles.calendarIcon} />
           </TouchableOpacity>
@@ -183,19 +187,41 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
           />
         </BottomSheetModalProvider>
         {/* Date Picker Modal */}
-        <DatePicker
-          modal
-          theme="light"
-          open={isDatePickerOpen}
-          date={date ?? new Date()}
-          onConfirm={(selectedDate: Date) => {
-            setDatePickerOpen(false);
-            validateDate(selectedDate);
-          }}
-          buttonColor="black"
-          onCancel={() => setDatePickerOpen(false)}
-          mode="date"
-        />
+
+        <Modal visible={isDatePickerOpen} transparent animationType="slide">
+          <View style={styles.datePickerModalContainer}>
+            <View style={styles.datePickerContent}>
+              <Text style={styles.title1}>Select Date</Text>
+
+              <DatePicker
+                modal={false}
+                theme="light"
+                open={isDatePickerOpen}
+                date={date ?? new Date()}
+                buttonColor="black"
+                mode="date"
+                onDateChange={setDate}
+              />
+              <View style={styles.row}>
+                <Button
+                  title="Cancel"
+                  onPress={() => {
+                    setDatePickerOpen(false);
+                  }}
+                  containerStyle={styles.confirmButton1}
+                />
+                <Button
+                  title="Confirm"
+                  onPress={() => {
+                    setDatePickerOpen(false);
+                    validateDate(date ?? new Date());
+                  }}
+                  containerStyle={styles.confirmButton1}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
       <FlashMessage position="top" style={styles.flash} />
     </ScreenWrapper>

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {width} from '~utils';
+import {height, width} from '~utils';
 import AppColors from '~utils/app-colors';
 import {FontFamily} from '~utils/font-family';
 
@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
+    color: AppColors.black,
+    fontFamily: FontFamily.appFontBold,
+  },
+  title1: {
+    fontSize: width(4.4),
     color: AppColors.black,
     fontFamily: FontFamily.appFontBold,
   },
@@ -129,6 +134,38 @@ const styles = StyleSheet.create({
     width: width(10),
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  datePickerModalContainer: {
+    flex: 1,
+    justifyContent: 'flex-end', // Position at the bottom of the screen
+    backgroundColor: 'rgba(0, 0, 0, 0)', // Adds a dimmed background overlay
+  },
+  datePickerContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width(100),
+    alignSelf: 'center',
+    height: height(41), // Adjust height as desired
+    backgroundColor: AppColors.white,
+    padding: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    // Shadow properties for iOS
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 7,
+    // Elevation for Android
+    elevation: 10,
+  },
+  confirmButton1: {
+    marginHorizontal: width(2),
+    marginTop: 15,
+    alignSelf: 'center',
+    width: '45%',
   },
 });
 export default styles;
