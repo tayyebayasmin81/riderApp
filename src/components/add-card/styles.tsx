@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   icon: {
-    width: width(9),
-    height: width(9),
+    marginTop: width(2),
+    width: width(10),
+    height: width(12),
     resizeMode: 'contain',
   },
   icon2: {
