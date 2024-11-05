@@ -20,6 +20,9 @@ const SearchingDrivers = ({navigation}: NativeStackScreenProps<any>) => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   useEffect(() => {
     bottomSheetModalRef.current?.present();
+    setTimeout(() => {
+      navigation.navigate(ScreenNames.RIDE_TRACKING);
+    }, 10000);
   }, []);
 
   return (
