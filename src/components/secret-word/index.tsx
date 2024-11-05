@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Dimensions, Image, Text, TextInput, View} from 'react-native';
 import AppColors from '~utils/app-colors';
 import styles from './styles';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {width} from '~utils';
 import {Icons} from '~assets/images';
@@ -28,10 +28,17 @@ const SecretWord: React.FC<Props> = ({
   return (
     <>
       <BottomSheetModal
-        enablePanDownToClose={false}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={modalRef!} />
+        )}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
-        onChange={handleModalChange}
+        onChange={index => {
+          if (index === -1) {
+            setNeedCarpool(false);
+          }
+          handleModalChange(index);
+        }}
         ref={modalRef}>
         <BottomSheetView>
           {/* Modal Content */}

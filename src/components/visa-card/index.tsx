@@ -13,6 +13,7 @@ import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types
 import {Icons} from '~assets/images';
 import {FontFamily} from '~utils/font-family';
 import {width} from '~utils';
+import {CustomBackdrop} from '~components';
 
 // Component Props
 type Props = {
@@ -43,7 +44,9 @@ const VisaCard: React.FC<Props> = ({
           handleModalChange(index);
         }}
         snapPoints={['50%']}
-        enablePanDownToClose={false}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={modalRef!} />
+        )}
         ref={modalRef}>
         <BottomSheetView>
           {/* Modal Content */}
@@ -122,7 +125,11 @@ const VisaCard: React.FC<Props> = ({
                 ]}>
                 <View>
                   <Text style={styles.value}>AED 60-90</Text>
-                  <Text style={styles.changeText1}>View breakdown</Text>
+                  <TouchableOpacity
+                    activeOpacity={0.5}
+                    onPress={() => modalRef?.current?.expand()}>
+                    <Text style={styles.changeText1}>View breakdown</Text>
+                  </TouchableOpacity>
                 </View>
                 <TouchableOpacity
                   style={styles.button1}

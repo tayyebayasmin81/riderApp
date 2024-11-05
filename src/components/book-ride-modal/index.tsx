@@ -13,7 +13,7 @@ import styles from './styles';
 import {Image} from 'react-native';
 import {Icons} from '~assets/images';
 import {locations, tabs} from '~utils/dummy-data';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import DatePicker from 'react-native-date-picker';
 
@@ -99,8 +99,11 @@ const BookRideModal: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={bottomSheetModalRef}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={bottomSheetModalRef!} />
+        )}
         onChange={handleSheetChanges}
-        enablePanDownToClose={false}
+        onDismiss={() => console.log('hi')}
         snapPoints={['60%', '75%', '90%']} // Adjusting snap points
       >
         <BottomSheetView>

@@ -2,7 +2,7 @@ import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React from 'react';
 import {Dimensions, Text, View} from 'react-native';
 import styles from './styles';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {width} from '~utils';
 
@@ -26,8 +26,10 @@ const VerificationCard: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         onChange={handleModalChange}
-        enablePanDownToClose={false}
-        ref={modalRef}>
+        ref={modalRef}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={modalRef!} />
+        )}>
         <BottomSheetView>
           {/* Modal Content */}
           <View style={styles.container}>

@@ -19,9 +19,14 @@ import ImagePicker from 'react-native-image-crop-picker';
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {BlurView} from '@react-native-community/blur';
+import FlashMessage, {showMessage} from 'react-native-flash-message';
 
-const sixYearsAgo = new Date();
-sixYearsAgo.setFullYear(sixYearsAgo.getFullYear() - 6);
+const today = new Date();
+const minAgeDate = new Date();
+const maxAgeDate = new Date();
+
+minAgeDate.setFullYear(today.getFullYear() - 18); // Maximum age: 18 years ago
+maxAgeDate.setFullYear(today.getFullYear() - 5); // Minimum age: 5 years ago
 
 const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
   const modalRef = useRef<BottomSheetModal>(null);
@@ -55,6 +60,19 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
     });
   };
 
+  const validateDate = (selectedDate: Date) => {
+    const age = today.getFullYear() - selectedDate.getFullYear();
+    if (age < 5 || age > 18) {
+      showMessage({
+        message: 'Invalid Age',
+        description: 'Please enter an age between 5 and 18 years.',
+        type: 'danger',
+        duration: 2000,
+      });
+    } else {
+      setDate(selectedDate);
+    }
+  };
   return (
     <ScreenWrapper
       statusBarColor={AppColors.primary}
@@ -65,9 +83,13 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
         showBackButton
         showNotificationIcon={false}
         titleStyle={styles.headerTitle}
-        onBackPress={() =>
-          navigation.navigate(ScreenNames.BOOK_RIDE, {isDashboard: true})
-        }
+        onBackPress={() => {
+          if (!isModalOpen) {
+            navigation.navigate(ScreenNames.BOOK_RIDE, {isDashboard: true});
+          } else {
+            modalRef?.current?.close();
+          }
+        }}
       />
       <View style={styles.container}>
         <View style={styles.container2}>
@@ -166,16 +188,16 @@ const PassengerDetail = ({navigation}: NativeStackScreenProps<any>) => {
           theme="light"
           open={isDatePickerOpen}
           date={date ?? new Date()}
-          onConfirm={(date: Date) => {
+          onConfirm={(selectedDate: Date) => {
             setDatePickerOpen(false);
-            setDate(date);
+            validateDate(selectedDate);
           }}
-          maximumDate={sixYearsAgo}
           buttonColor="black"
           onCancel={() => setDatePickerOpen(false)}
           mode="date"
         />
       </View>
+      <FlashMessage position="top" style={styles.flash} />
     </ScreenWrapper>
   );
 };

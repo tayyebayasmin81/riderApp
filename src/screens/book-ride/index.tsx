@@ -77,6 +77,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
     PromoCodeModalRef: useRef<BottomSheetModal>(null),
   };
   const [selectYouth, setSelectYouth] = useState(false);
+
   const handleSheetChanges = useCallback((index: number) => {
     setSheetIndex(index);
   }, []);
@@ -139,7 +140,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
       scrollType="none"
       translucent>
       <View style={styles.container}>
-        <Suspense fallback={<Text>Loading...</Text>}>
+        <Suspense fallback={<Text>{''}</Text>}>
           <Header
             title="Location"
             showBackButton
@@ -147,8 +148,34 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
             showHistoryIcon
             titleStyle={styles.headerTitle}
             onBackPress={() => {
-              if (sheetIndex !== -1 || selectYouth) {
+              if (modalStates?.verifyCardOpen[0]) {
+                modalRefs?.verifyCardModalRef?.current?.close();
+              } else if (modalStates?.selectJoinee[0]) {
+                modalRefs?.selectJoineeModalRef?.current?.close();
+              } else if (modalStates?.isSplitModalOpen[0]) {
+                modalRefs?.splitFareModalRef?.current?.close();
+              } else if (sheetIndex !== -1) {
                 navigation.goBack();
+              } else if (modalStates?.isModalOpen[0]) {
+                setSelectYouth(true);
+                modalRefs?.secretWordModalRef?.current?.close();
+              } else if (modalStates?.selectJoinee[0]) {
+                modalRefs?.selectJoineeModalRef?.current?.close();
+              } else if (modalStates?.isChooseRideModalOpen[0]) {
+                modalRefs?.chooseRideModalRef?.current?.close();
+              } else if (modalStates?.isVisaModalOpen[0]) {
+                modalRefs?.visaModalRef?.current?.close();
+              } else if (modalStates?.promoCardOpen[0]) {
+                modalRefs?.PromoCodeModalRef?.current?.close();
+                modalRefs?.visaModalRef?.current?.present();
+              } else if (modalStates?.isChangeCardOpen[0]) {
+                modalRefs?.changeCardModalRef?.current?.close();
+                modalRefs?.splitFareModalRef?.current?.close();
+              } else if (modalStates?.isAddCardOpen[0]) {
+                modalRefs?.addCardModalRef?.current?.close();
+                modalRefs?.changeCardModalRef?.current?.present();
+              } else if (selectYouth) {
+                navigation?.replace(ScreenNames.PASSENGER_DETAIL);
               }
             }}
           />
@@ -166,6 +193,7 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                     <Text style={styles.repeatTripsTxt}>Repeat Trips</Text>
                   </TouchableOpacity>
                 )}
+
                 <BookRideModal
                   bottomSheetModalRef={modalRefs?.bottomSheetModalRef}
                   handleSheetChanges={handleSheetChanges}
@@ -211,9 +239,9 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
                 {/* Lazy-loaded Modals */}
                 <SecretWord
                   modalRef={modalRefs.secretWordModalRef}
-                  handleModalChange={index =>
-                    toggleModal(modalStates.isModalOpen[1], index)
-                  }
+                  handleModalChange={index => {
+                    toggleModal(modalStates.isModalOpen[1], index);
+                  }}
                   onPressConfirm={() => {
                     modalRefs.selectYouthModalRef.current?.close();
                     modalRefs.secretWordModalRef.current?.close();
@@ -262,9 +290,12 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
 
                 <PromoCard
                   modalRef={modalRefs.PromoCodeModalRef}
-                  handleModalChange={index =>
-                    toggleModal(modalStates.promoCardOpen[1], index)
-                  }
+                  handleModalChange={index => {
+                    toggleModal(modalStates.promoCardOpen[1], index);
+                    if (index === -1) {
+                      modalRefs?.visaModalRef?.current?.present();
+                    }
+                  }}
                   onPressClose={() => {
                     modalRefs.PromoCodeModalRef.current?.close();
                     modalRefs?.visaModalRef?.current?.present();
@@ -316,9 +347,10 @@ const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
 
                 <AddCard
                   modalRef={modalRefs.addCardModalRef}
-                  handleModalChange={index =>
-                    toggleModal(modalStates.isAddCardOpen[1], index)
-                  }
+                  handleModalChange={index => {
+                    modalRefs?.splitFareModalRef?.current?.close();
+                    toggleModal(modalStates.isAddCardOpen[1], index);
+                  }}
                   onPressConfirm={() => {
                     modalRefs.splitFareModalRef.current?.close();
                     modalRefs.verifyCardModalRef.current?.present();

@@ -148,6 +148,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
+  blurView: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+  },
   doneText: {color: 'white', fontWeight: 'bold', fontSize: 16},
 });
 export default styles;

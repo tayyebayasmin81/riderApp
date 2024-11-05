@@ -11,14 +11,14 @@ import AppColors from '~utils/app-colors';
 type Props = {
   modalRef?: React.RefObject<BottomSheetModalMethods>;
   onGotoNext: () => void;
+  onDismiss: () => void;
 };
 
-const RideTrack: React.FC<Props> = ({modalRef, onGotoNext}) => {
+const RideTrack: React.FC<Props> = ({modalRef, onGotoNext, onDismiss}) => {
   const [arrive, setIsArrive] = useState(false);
   const [booked, setIsBooked] = useState(false);
 
   const [index, setIndex] = useState<number>();
-
   useEffect(() => {
     setTimeout(() => {
       setIsArrive(true);
@@ -36,12 +36,14 @@ const RideTrack: React.FC<Props> = ({modalRef, onGotoNext}) => {
   return (
     <>
       <BottomSheetModal
-        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
         snapPoints={['44%']}
-        onChange={index => setIndex(index)}>
+        onDismiss={onDismiss}
+        onChange={index => {
+          setIndex(index);
+        }}>
         <BottomSheetView>
           {/* Modal Content */}
           {!booked ? (

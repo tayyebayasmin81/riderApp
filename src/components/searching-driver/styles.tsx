@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     width: width(12),
   },
   title: {
-    fontSize: width(5),
+    fontSize: width(4.3),
     fontFamily: FontFamily.appFontBold,
     marginBottom: 3,
     color: AppColors.black,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   date: {
     marginTop: width(3),
     color: AppColors.black,
-    fontSize: 15,
+    fontSize: width(3.2),
     fontFamily: FontFamily.appFontBold,
   },
   locationContainer: {
@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 8,
     width: width(12),
-    height: width(8),
+    height: width(7.5),
     resizeMode: 'contain',
   },
   locationText: {
     fontFamily: FontFamily.appFontMedium,
-    fontSize: 14,
+    fontSize: width(3),
     color: AppColors.gray,
   },
   iconProgress: {
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     height: 90,
   },
   addressText: {
-    fontSize: 14,
+    fontSize: width(3),
     marginBottom: 11,
     fontFamily: FontFamily.appFontSemiBold,
     color: '#000',
@@ -80,15 +80,15 @@ const styles = StyleSheet.create({
   },
   detailText: {
     color: AppColors.black,
-    fontSize: 13,
+    fontSize: width(3),
     marginLeft: 8,
     fontFamily: FontFamily.appFontMedium,
   },
   detailTitle: {
     color: AppColors.gray,
-    fontSize: 14,
+    fontSize: width(3.6),
     marginLeft: 2,
-    marginBottom: width(6),
+    marginBottom: width(2),
     fontFamily: FontFamily.appFontSemiBold,
   },
 });

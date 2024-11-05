@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
   txt1: {
     color: AppColors.primary,
     fontFamily: FontFamily.appFontSemiBold,
-    fontSize: 16,
+    fontSize: width(3.7),
   },
   txt2: {
     color: '#ABA7A7',
     fontFamily: FontFamily.appFontMedium,
-    fontSize: 16,
+    fontSize: width(3.7),
   },
   carContainer: {
     alignItems: 'center',

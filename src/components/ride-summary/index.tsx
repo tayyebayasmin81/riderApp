@@ -2,7 +2,7 @@ import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
 import {Image} from 'react-native';
@@ -35,11 +35,13 @@ const RiderSummary: React.FC<Props> = ({
   return (
     <>
       <BottomSheetModal
-        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
         snapPoints={['93%']}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={modalRef!} />
+        )}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}

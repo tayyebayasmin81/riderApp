@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     marginHorizontal: width(2),
   },
   title: {
-    fontSize: width(6),
+    fontSize: width(5.2),
     fontFamily: FontFamily.appFontSemiBold,
     marginBottom: 10,
     color: AppColors.black,

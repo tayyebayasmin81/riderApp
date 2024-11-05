@@ -3,7 +3,7 @@ import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import LinearGradient from 'react-native-linear-gradient';
 
 // Component Props
@@ -26,7 +26,9 @@ const AddPhotoReminder: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={modalRef}
-        enablePanDownToClose={false}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={modalRef!} />
+        )}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}

@@ -36,7 +36,6 @@ const PromoCard: React.FC<Props> = ({
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         onChange={handleModalChange}
-        enablePanDownToClose={false}
         ref={modalRef}>
         <BottomSheetView>
           {/* Modal Content */}

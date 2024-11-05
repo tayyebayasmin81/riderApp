@@ -177,6 +177,12 @@ const styles = StyleSheet.create({
     borderWidth: width(0.4),
     borderRadius: width(100),
   },
+  flash: {
+    marginTop: width(10),
+    borderRadius: width(4),
+    width: width(90),
+    alignSelf: 'center',
+  },
   addConfirm: {marginBottom: width(5)},
 });
 export default styles;

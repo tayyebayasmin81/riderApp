@@ -2,7 +2,7 @@ import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
 import {Dimensions, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import AppColors from '~utils/app-colors';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
@@ -37,8 +37,10 @@ const SplitFare: React.FC<Props> = ({
       <BottomSheetModal
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
-        enablePanDownToClose={false}
         ref={bottomSheetModalRef}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={bottomSheetModalRef!} />
+        )}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}

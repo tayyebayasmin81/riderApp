@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     width: width(12),
   },
   title: {
-    fontSize: width(4.5),
+    fontSize: width(4),
     fontFamily: FontFamily.appFontBold,
     marginBottom: 3,
     color: AppColors.black,
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     marginVertical: width(3),
   },
   txt: {
+    fontSize: width(3),
     color: AppColors.black,
     fontFamily: FontFamily.appFontSemiBold,
     marginVertical: 6,

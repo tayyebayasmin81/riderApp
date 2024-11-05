@@ -5,6 +5,7 @@ import styles from './styles';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {Icons} from '~assets/images';
 import {width} from '~utils';
+import {CustomBackdrop} from '~components';
 
 // Component Props
 type Props = {
@@ -30,7 +31,9 @@ const ChangeCard: React.FC<Props> = ({
         onChange={index => {
           handleModalChange(index);
         }}
-        enablePanDownToClose={false}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={modalRef!} />
+        )}
         ref={modalRef}>
         <BottomSheetView>
           <View style={styles.container}>

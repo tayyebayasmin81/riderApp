@@ -6,6 +6,7 @@ import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types
 import {rideOptions} from '~utils/dummy-data';
 import {Image} from 'react-native';
 import {Icons} from '~assets/images';
+import CustomBackdrop from '~components/backdrop';
 
 // Component Props
 type Props = {
@@ -58,10 +59,12 @@ const ChooseRide: React.FC<Props> = ({
   return (
     <>
       <BottomSheetModal
-        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
         ref={bottomSheetModalRef}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={bottomSheetModalRef!} />
+        )}
         onChange={handleModalChange}>
         <BottomSheetView>
           {/* Modal Content */}

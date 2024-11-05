@@ -11,7 +11,7 @@ import AppColors from '~utils/app-colors';
 import styles from './styles';
 import {Image} from 'react-native';
 import {Icons} from '~assets/images';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {contactdata} from '~utils/dummy-data';
 
@@ -60,10 +60,12 @@ const SelectYouth: React.FC<Props> = ({
   return (
     <>
       <BottomSheetModal
-        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
-        ref={bottomSheetModalRef}>
+        ref={bottomSheetModalRef}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={bottomSheetModalRef!} />
+        )}>
         <BottomSheetView>
           {/* Modal Content */}
           <View style={styles.modalContainer}>

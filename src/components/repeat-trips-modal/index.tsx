@@ -49,8 +49,7 @@ const RepeatTripsModal: React.FC<Props> = ({
       <BottomSheetModal
         backgroundStyle={styles.bottomSheetModal}
         handleIndicatorStyle={styles.handleIndicator}
-        ref={repeatTripsModalRef}
-        enablePanDownToClose={false}>
+        ref={repeatTripsModalRef}>
         <BottomSheetView>
           {/* Modal Content */}
           <View style={styles.modalContainer}>

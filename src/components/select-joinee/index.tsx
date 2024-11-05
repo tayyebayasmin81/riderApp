@@ -12,7 +12,7 @@ import AppColors from '~utils/app-colors';
 import styles from './styles';
 import {Image} from 'react-native';
 import {Icons} from '~assets/images';
-import {Button} from '~components';
+import {Button, CustomBackdrop} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {contactdata2} from '~utils/dummy-data';
 import {width} from '~utils';
@@ -89,9 +89,11 @@ const SelectJoinee: React.FC<Props> = ({
   return (
     <>
       <BottomSheetModal
-        enablePanDownToClose={false}
         backgroundStyle={styles.bottomSheetModal}
         onChange={handleModalChange}
+        backdropComponent={() => (
+          <CustomBackdrop bottomSheetModalRef={bottomSheetModalRef!} />
+        )}
         handleIndicatorStyle={styles.handleIndicator}
         ref={bottomSheetModalRef}>
         <BottomSheetView>

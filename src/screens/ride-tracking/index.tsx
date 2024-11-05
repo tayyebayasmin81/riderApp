@@ -42,6 +42,9 @@ const RideTracking = ({navigation}: NativeStackScreenProps<any>) => {
             <GestureHandlerRootView>
               <BottomSheetModalProvider>
                 <RideTrack
+                  onDismiss={() =>
+                    navigation?.navigate(ScreenNames.SearchingDrivers)
+                  }
                   modalRef={bottomSheetModalRef}
                   onGotoNext={() => {
                     bottomSheetModalRef?.current?.close();
@@ -51,6 +54,8 @@ const RideTracking = ({navigation}: NativeStackScreenProps<any>) => {
                 <RiderSummary
                   modalRef={modalRef}
                   onPressConfirm={() => {
+                    bottomSheetModalRef?.current?.close();
+                    modalRef?.current?.close();
                     navigation.navigate(ScreenNames?.RIDE_SUMMARY);
                   }}
                   handleModalChange={handleModalChange}

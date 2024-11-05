@@ -19,3 +19,4 @@ export {default as ChangeCard} from './change-card';
 export {default as AddCard} from './add-card';
 export {default as VerifyCard} from './verification-card';
 export {default as PromoCard} from './promo-card';
+export {default as CustomBackdrop} from './backdrop';
