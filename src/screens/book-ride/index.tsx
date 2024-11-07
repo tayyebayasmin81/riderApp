@@ -35,7 +35,6 @@ const VisaCard = React.lazy(() => import('~components/visa-card'));
 
 const BookRide = ({navigation, route}: NativeStackScreenProps<any>) => {
   const selection = route?.params?.selection;
-
   const [sheetIndex, setSheetIndex] = useState(-1);
   const [selectedTitle, setSelectedTitle] = useState('Destination');
 

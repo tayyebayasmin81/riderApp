@@ -2,7 +2,6 @@ import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {useState} from 'react';
 import {
   Dimensions,
-  Modal,
   ScrollView,
   Text,
   TextInput,
@@ -14,9 +13,8 @@ import styles from './styles';
 import {Image} from 'react-native';
 import {Icons} from '~assets/images';
 import {locations, tabs} from '~utils/dummy-data';
-import {Button, CustomBackdrop} from '~components';
+import {Button, CustomBackdrop, DatePickerModal} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
-import DatePicker from 'react-native-date-picker';
 
 // Component Props
 type Props = {
@@ -38,7 +36,6 @@ const BookRideModal: React.FC<Props> = ({
   const [selectedHeartIndices, setSelectedHeartIndices] = useState<number[]>(
     [],
   );
-  const [date, setDate] = useState(new Date());
   const [confirmdate, setConfirmDate] = useState(new Date());
 
   const [open, setOpen] = useState(false);
@@ -194,42 +191,13 @@ const BookRideModal: React.FC<Props> = ({
               ))}
             </ScrollView>
             {/* Confirm Pickup Button */}
-            <Modal
-              visible={open}
-              transparent
-              animationType="slide"
-              onRequestClose={() => setOpen(false)}>
-              <View style={styles.datePickerModalContainer}>
-                <View style={styles.datePickerContent}>
-                  <Text style={styles.title1}>Select Date</Text>
-
-                  <DatePicker
-                    modal={false}
-                    mode="datetime"
-                    date={date}
-                    onDateChange={setDate}
-                    theme="light"
-                  />
-                  <View style={styles.row}>
-                    <Button
-                      title="Cancel"
-                      onPress={() => {
-                        setOpen(false);
-                      }}
-                      containerStyle={styles.confirmButton1}
-                    />
-                    <Button
-                      title="Confirm"
-                      onPress={() => {
-                        setOpen(false);
-                        setConfirmDate(date);
-                      }}
-                      containerStyle={styles.confirmButton1}
-                    />
-                  </View>
-                </View>
-              </View>
-            </Modal>
+            <DatePickerModal
+              open={open}
+              onClose={() => setOpen(false)}
+              onPressConfirm={date => {
+                setConfirmDate(date);
+              }}
+            />
           </View>
         </BottomSheetView>
       </BottomSheetModal>
