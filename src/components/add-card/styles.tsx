@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
     height: width(12),
     resizeMode: 'contain',
   },
+  iconMaster: {
+    width: width(8.5),
+    height: width(9),
+    resizeMode: 'contain',
+  },
   icon2: {
     width: width(7),
     height: width(9),

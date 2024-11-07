@@ -136,7 +136,7 @@ const AddCard: React.FC<Props> = ({
             </View>
 
             <View style={styles.cardIcons}>
-              <Image source={Icons.card3} style={styles.icon} />
+              <Image source={Icons.card3} style={styles.iconMaster} />
               <Image source={Icons.visa2} style={styles.icon2} />
               <Image source={Icons.american} style={styles.icon3} />
             </View>
