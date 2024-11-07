@@ -23,7 +23,7 @@ const SearchingDrivers = ({navigation}: NativeStackScreenProps<any>) => {
     setTimeout(() => {
       navigation.navigate(ScreenNames.RIDE_TRACKING);
     }, 10000);
-  }, []);
+  }, [navigation]);
 
   return (
     <ScreenWrapper
