@@ -192,6 +192,43 @@ const BookRideModal: React.FC<Props> = ({
           </View>
         </BottomSheetView>
       </BottomSheetModal>
+      {/* <Modal
+      // previous modal
+              visible={open}
+              transparent
+              animationType="slide"
+              onRequestClose={() => setOpen(false)}>
+              <View style={styles.datePickerModalContainer}>
+                <View style={styles.datePickerContent}>
+                  <Text style={styles.title1}>Select Date</Text>
+
+                  <DatePicker
+                    modal={false}
+                    mode="datetime"
+                    date={date}
+                    onDateChange={setDate}
+                    theme="light"
+                  />
+                  <View style={styles.row}>
+                    <Button
+                      title="Cancel"
+                      onPress={() => {
+                        setOpen(false);
+                      }}
+                      containerStyle={styles.confirmButton1}
+                    />
+                    <Button
+                      title="Confirm"
+                      onPress={() => {
+                        setOpen(false);
+                        setConfirmDate(date);
+                      }}
+                      containerStyle={styles.confirmButton1}
+                    />
+                  </View>
+                </View>
+              </View>
+            </Modal> */}
       {sheetIndex !== -1 && (
         <Button
           containerStyle={[
