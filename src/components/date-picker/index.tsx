@@ -3,21 +3,28 @@ import {Modal, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import styles from './styles';
 import {Button} from '~components';
-import {Icons} from '~assets/images';
-import {Image} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import FlashMessage, {showMessage} from 'react-native-flash-message';
 
 type Props = {
   onClose: () => void;
   open: boolean;
   onPressConfirm: (date: Date) => void;
+  isRepeat?: boolean;
+  onPressRepeat: (selectedDays: string[]) => void;
 };
-const DatePickerModal: React.FC<Props> = ({open, onClose, onPressConfirm}) => {
+const DatePickerModal: React.FC<Props> = ({
+  open,
+  onClose,
+  onPressConfirm,
+  isRepeat,
+  onPressRepeat,
+}) => {
   const [date, setDate] = useState(new Date());
-  const [isRepeat, setIsRepeat] = useState(false);
   const [isRepeatShow, setIsRepeatShow] = useState(false);
 
   const [selectedFrequency, setSelectedFrequency] = useState('Weekly');
-  const [selectedDays, setSelectedDays] = useState<string[]>(['Mon']);
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -62,38 +69,28 @@ const DatePickerModal: React.FC<Props> = ({open, onClose, onPressConfirm}) => {
               date={date}
               onDateChange={setDate}
               theme="light"
+              minimumDate={new Date()}
             />
-            <View style={styles.row2}>
-              <TouchableOpacity
-                onPress={() => setIsRepeat(!isRepeat)}
-                style={styles.row1}>
-                {isRepeat ? (
-                  <Image source={Icons.selected} style={styles.selectedIcon} />
-                ) : (
-                  <View style={styles.Circle} />
-                )}
+
+            <Button
+              title="Confirm Date & Time"
+              onPress={() => {
+                if (isRepeat) {
+                  setIsRepeatShow(true);
+                } else {
+                  onClose();
+                }
+                onPressConfirm(date);
+              }}
+              containerStyle={styles.confirmButton1}
+            />
+            <LinearGradient
+              colors={['#34C560', '#235B43']}
+              style={styles.repeat}>
+              <TouchableOpacity onPress={() => setIsRepeatShow(true)}>
+                <Text style={styles.repeatTxt}>Confirm & Repeat this Trip</Text>
               </TouchableOpacity>
-              <Text style={styles.title}>Do you want to repeat this trip?</Text>
-            </View>
-            <View style={styles.row}>
-              <Button
-                title="Cancel"
-                onPress={onClose}
-                containerStyle={styles.confirmButton1}
-              />
-              <Button
-                title="Confirm"
-                onPress={() => {
-                  if (isRepeat) {
-                    setIsRepeatShow(true);
-                  } else {
-                    onClose();
-                  }
-                  onPressConfirm(date);
-                }}
-                containerStyle={styles.confirmButton1}
-              />
-            </View>
+            </LinearGradient>
           </View>
         </View>
       ) : (
@@ -139,28 +136,47 @@ const DatePickerModal: React.FC<Props> = ({open, onClose, onPressConfirm}) => {
             </View>
 
             {/* Days of the Week */}
-            <ScrollView
-              horizontal
-              contentContainerStyle={styles.daysContainer}
-              showsHorizontalScrollIndicator={false}>
-              {daysOfWeek.map(item => (
-                <View key={item}>{renderDay({item})}</View>
-              ))}
-            </ScrollView>
+            {selectedFrequency === 'Weekly' ? (
+              <ScrollView
+                horizontal
+                contentContainerStyle={styles.daysContainer}
+                showsHorizontalScrollIndicator={false}>
+                {daysOfWeek.map(item => (
+                  <View key={item}>{renderDay({item})}</View>
+                ))}
+              </ScrollView>
+            ) : (
+              <View style={styles.daysContainerEmpty} />
+            )}
 
             {/* Continue Button */}
             <Button
               containerStyle={styles.confirmButton}
               onPress={() => {
-                onClose();
-                setIsRepeat(false);
-                setIsRepeatShow(false);
+                if (selectedFrequency === 'Daily') {
+                  onPressRepeat([]);
+                  onClose();
+                  setIsRepeatShow(false);
+                } else {
+                  if (selectedDays?.length === 0) {
+                    showMessage({
+                      type: 'danger',
+                      duration: 2000,
+                      message: 'Select at least one day to repeat weekly',
+                    });
+                  } else {
+                    setIsRepeatShow(false);
+                    onPressRepeat(selectedDays);
+                    onClose();
+                  }
+                }
               }}
               title="Confirm"
             />
           </View>
         </View>
       )}
+      <FlashMessage position="top" style={styles.flash} />
     </Modal>
   );
 };

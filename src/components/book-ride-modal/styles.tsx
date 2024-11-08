@@ -42,6 +42,13 @@ const styles = StyleSheet.create({
     fontSize: width(3),
     fontFamily: FontFamily.appFontBold,
   },
+  repeatText: {
+    width: width(30),
+    color: '#34C560',
+    marginLeft: width(5),
+    fontSize: width(1.8),
+    fontFamily: FontFamily.appFontSemiBold,
+  },
 
   tabsContainer: {
     width: width(90),
@@ -102,7 +109,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   searchContainer: {

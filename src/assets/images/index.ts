@@ -50,6 +50,7 @@ export const Icons = {
   scan: require('./scan.gif'),
   right: require('./right.png'),
   visa2: require('./visa2.png'),
+  repeat: require('./repeat.gif'),
   verify: require('./verify.png'),
   person: require('./person.png'),
   below: require('./below.png'),

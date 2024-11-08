@@ -15,6 +15,7 @@ import {Icons} from '~assets/images';
 import {locations, tabs} from '~utils/dummy-data';
 import {Button, CustomBackdrop, DatePickerModal} from '~components';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
+import {formatDate} from '~utils/methods';
 
 // Component Props
 type Props = {
@@ -39,6 +40,8 @@ const BookRideModal: React.FC<Props> = ({
   const [confirmdate, setConfirmDate] = useState(new Date());
 
   const [open, setOpen] = useState(false);
+  const [isRepeat, setIsRepeat] = useState(false);
+  const [repeatDays, setRepeatDays] = useState<string[]>([]);
   const screenHeight = Dimensions.get('screen').height;
 
   const handleHeartPress = (index: number) => {
@@ -56,41 +59,6 @@ const BookRideModal: React.FC<Props> = ({
 
   const handleTabPress = (tab: string) => {
     setSelectedTab(tab);
-  };
-  const formatDate = (date: Date) => {
-    const now = new Date();
-
-    // Check if it's within the current minute (to show "Now")
-    if (Math.abs(now.getTime() - date.getTime()) < 60000) {
-      return 'Now';
-    }
-
-    // Check if the date is today
-    const isToday =
-      date.getDate() === now.getDate() &&
-      date.getMonth() === now.getMonth() &&
-      date.getFullYear() === now.getFullYear();
-
-    if (isToday) {
-      const hours = date.getHours();
-      const minutes = date.getMinutes();
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const formattedTime = `${hours % 12 || 12}:${
-        minutes < 10 ? '0' + minutes : minutes
-      } ${ampm}`;
-      return `Today, ${formattedTime}`;
-    } else {
-      // Format as "06 Nov, 1:20 PM"
-      const day = date.getDate();
-      const month = date.toLocaleString('default', {month: 'short'});
-      const hours = date.getHours();
-      const minutes = date.getMinutes();
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const formattedTime = `${hours % 12 || 12}:${
-        minutes < 10 ? '0' + minutes : minutes
-      } ${ampm}`;
-      return `${day} ${month}, ${formattedTime}`;
-    }
   };
 
   return (
@@ -111,15 +79,33 @@ const BookRideModal: React.FC<Props> = ({
           <View style={styles.modalContainer}>
             <View style={styles.inputRow}>
               <Text style={styles.title}>{title}</Text>
-              <TouchableOpacity
-                style={styles.row}
-                onPress={() => setOpen(true)}>
-                <Image source={Icons.calender} style={styles.calenderIcon} />
-                <Text style={styles.timeText}>{formatDate(confirmdate)}</Text>
-                {formatDate(confirmdate) === 'Now' && (
-                  <Image source={Icons.bottom} style={styles.bottomIcon} />
+              <View>
+                <TouchableOpacity
+                  style={styles.row}
+                  onPress={() => setOpen(true)}>
+                  <Image source={Icons.calender} style={styles.calenderIcon} />
+                  <View>
+                    <Text style={styles.timeText}>
+                      {formatDate(confirmdate)}
+                    </Text>
+                  </View>
+                  {formatDate(confirmdate) === 'Now' && (
+                    <Image source={Icons.bottom} style={styles.bottomIcon} />
+                  )}
+                  {formatDate(confirmdate) !== 'Now' && isRepeat && (
+                    <Image
+                      source={Icons.repeat}
+                      style={styles.calenderIcon}
+                      tintColor={AppColors.primary}
+                    />
+                  )}
+                </TouchableOpacity>
+                {isRepeat && (
+                  <Text style={styles.repeatText}>
+                    Repeat: Every {repeatDays.join(', ')}
+                  </Text>
                 )}
-              </TouchableOpacity>
+              </View>
             </View>
             <View style={styles.searchContainer}>
               <Image source={Icons.search} style={styles.searchIcon} />
@@ -197,6 +183,11 @@ const BookRideModal: React.FC<Props> = ({
               onPressConfirm={date => {
                 setConfirmDate(date);
               }}
+              onPressRepeat={(selectedDays: string[]) => {
+                setIsRepeat(true);
+                setRepeatDays(selectedDays);
+              }}
+              isRepeat={isRepeat}
             />
           </View>
         </BottomSheetView>
